@@ -1,7 +1,12 @@
 import React from "react";
+import UserForm from "./components/UserForm";
 
 const App = () => {
-  return <div></div>;
+  return (
+    <div>
+      <UserForm />
+    </div>
+  );
 };
 
 export default App;
