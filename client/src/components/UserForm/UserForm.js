@@ -1,137 +1,65 @@
 import React, { useState } from "react";
-import clsx from "clsx";
-import Picture from "../../assets/background.jpg";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { Typography, Grid, Button, ButtonGroup } from "@material-ui/core";
+import StepperComponent from "./components/Stepper";
+import { useStyles } from "./styles";
+import PersonalDetails from "./components/PersonalDetails";
+import ContactDetails from "./components/ContactDetails";
+import OfficialDetails from "./components/OfficialDetails";
+import PaymentDetails from "./components/PaymentDetails";
+import Introduction from "./components/Introduction";
 import {
-  Typography,
-  Stepper,
-  Step,
-  StepLabel,
-  StepConnector,
-  Grid,
-  Button
-} from "@material-ui/core";
-import { Settings, GroupAdd, VideoLabel, AccountBox } from "@material-ui/icons";
-
-const ColorlibConnector = withStyles({
-  alternativeLabel: {
-    top: 22
-  },
-  active: {
-    "& $line": {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)"
-    }
-  },
-  completed: {
-    "& $line": {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)"
-    }
-  },
-  line: {
-    height: 3,
-    border: 0,
-    backgroundColor: "#eaeaf0",
-    borderRadius: 1
-  }
-})(StepConnector);
-
-const useColorlibStepIconStyles = makeStyles({
-  root: {
-    backgroundColor: "#ccc",
-    zIndex: 1,
-    color: "#fff",
-    width: 50,
-    height: 50,
-    display: "flex",
-    borderRadius: "50%",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  active: {
-    backgroundImage:
-      "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
-    boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)"
-  },
-  completed: {
-    backgroundImage:
-      "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)"
-  }
-});
-
-const ColorlibStepIcon = props => {
-  const classes = useColorlibStepIconStyles();
-  const { active, completed } = props;
-  const icons = {
-    1: <Settings />,
-    2: <GroupAdd />,
-    3: <VideoLabel />,
-    4: <AccountBox />
-  };
-
-  return (
-    <div
-      className={clsx(classes.root, {
-        [classes.active]: active,
-        [classes.completed]: completed
-      })}
-    >
-      {icons[String(props.icon)]}
-    </div>
-  );
-};
-
-const useStyles = makeStyles({
-  root: {
-    minHeight: "100vh",
-    background: "#424242"
-  },
-  picture: {
-    background: `url(${Picture}) center no-repeat`,
-    backgroundSize: "cover"
-  },
-  signUpContainer: {},
-  signUpTitle: {
-    textTransform: "capitalize"
-  },
-  signUpSubtitle: {},
-  stepper: {
-    background: "transparent"
-  }
-});
-
-const getSteps = () => {
-  return ["Personal", "Contact", "Official", "Payment"];
-};
-
-const getStepContent = step => {
-  switch (step) {
-    case 0:
-      return "Select campaign settings...";
-    case 1:
-      return "What is an ad group anyways?";
-    case 2:
-      return "This is the bit I really care about!";
-    default:
-      return "Unknown step";
-  }
-};
+  handleActiveStepNext,
+  handleActiveStepBack,
+  handleActiveStepReset
+} from "../../store/UserForm/actions";
 
 const UserForm = () => {
-  const [activeStep, setActiveStep] = useState(0);
   const classes = useStyles();
-  const steps = getSteps();
-
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
+  const { activeStep } = useSelector(state => {
+    console.log(state);
+    return state;
+  });
+  console.log(activeStep);
+  const dispatch = useDispatch();
+  const handleNextStep = () => {
+    dispatch(handleActiveStepNext());
+  };
+  const handleBackStep = () => {
+    dispatch(handleActiveStepBack());
+  };
+  const handleResetStep = () => {
+    dispatch(handleActiveStepReset());
   };
 
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
-  const handleReset = () => {
-    setActiveStep(0);
+  const getStepContent = () => {
+    switch (activeStep) {
+      case -1:
+        return <Introduction handleNextStep={handleNextStep} />;
+      case 0:
+        return (
+          <PersonalDetails
+            formTitle="Personal Details:"
+            handleNextStep={handleNextStep}
+            handleResetStep={handleResetStep}
+          />
+        );
+      case 1:
+        return (
+          <ContactDetails
+            formTitle="Contact Details:"
+            handleNextStep={handleNextStep}
+            handleBackStep={handleBackStep}
+            handleResetStep={handleResetStep}
+          />
+        );
+      case 2:
+        return <OfficialDetails />;
+      case 3:
+        return <PaymentDetails />;
+      default:
+        return "Unknown step";
+    }
   };
 
   return (
@@ -155,26 +83,8 @@ const UserForm = () => {
               Fill all form field to go next step
             </Typography>
           </div>
-          <Stepper
-            className={classes.stepper}
-            alternativeLabel
-            activeStep={activeStep}
-            connector={<ColorlibConnector />}
-          >
-            {steps.map(label => (
-              <Step key={label}>
-                <StepLabel StepIconComponent={ColorlibStepIcon}>
-                  {label}
-                </StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <Button variant="outlined" color="secondary" onClick={handleBack}>
-            Back
-          </Button>
-          <Button variant="outlined" color="primary" onClick={handleNext}>
-            Next
-          </Button>
+          <StepperComponent activeStep={activeStep} />
+          <div className={classes.signUpFormBox}>{getStepContent()}</div>
         </Grid>
       </Grid>
     </div>
