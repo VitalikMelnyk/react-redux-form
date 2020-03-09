@@ -12,14 +12,14 @@ const ContactDetails = ({
         {formTitle}
       </Typography>
       <ButtonGroup>
-        <Button variant="outlined" color="secondary" onClick={handleResetStep}>
+        <Button variant="contained" color="secondary" onClick={handleResetStep}>
           Reset Steps
         </Button>
-        <Button variant="outlined" color="secondary" onClick={handleBackStep}>
+        <Button variant="contained" color="secondary" onClick={handleBackStep}>
           Back
         </Button>
 
-        <Button variant="outlined" color="primary" onClick={handleNextStep}>
+        <Button variant="contained" color="primary" onClick={handleNextStep}>
           Next
         </Button>
       </ButtonGroup>

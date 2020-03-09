@@ -22,7 +22,9 @@ export const useStyles = makeStyles({
   signUpSubtitle: {},
   signUpFormBox: {
     margin: "10px",
-    // border: "1px solid black",
+    padding: "50px 10px 30px",
+    border: "3px solid black",
+    borderRadius: "20px",
     minHeight: "fit-content"
   }
 });

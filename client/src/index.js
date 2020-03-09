@@ -3,16 +3,15 @@ import "bootstrap/dist/css/bootstrap.css";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+// import { composeWithDevTools } from "redux-devtools-extension";
+// const devtools = composeWithDevTools();
+import logger from "redux-logger";
 import thunk from "redux-thunk";
-import * as serviceWorker from "./serviceWorker";
-import reducer from "./store/reducers/rootReducer";
-import { UserFormReducer } from "./store/UserForm/reducers";
-import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./store/UserForm/reducers";
 import "./index.css";
 import App from "./App";
-// need to add reducer
-const devtools = composeWithDevTools();
-const store = createStore(UserFormReducer, devtools);
+import * as serviceWorker from "./serviceWorker";
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 console.log(store.getState());
 
 ReactDOM.render(

@@ -6,7 +6,7 @@ const Introduction = ({ handleNextStep }) => {
   return (
     <div className={classes.introBox}>
       <ButtonGroup>
-        <Button variant="outlined" color="primary" onClick={handleNextStep}>
+        <Button variant="contained" color="primary" onClick={handleNextStep}>
           Let's Start
         </Button>
       </ButtonGroup>

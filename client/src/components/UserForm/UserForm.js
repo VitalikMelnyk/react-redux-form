@@ -16,11 +16,8 @@ import {
 
 const UserForm = () => {
   const classes = useStyles();
-  const { activeStep } = useSelector(state => {
-    console.log(state);
-    return state;
-  });
-  console.log(activeStep);
+  const { UserFormReducer } = useSelector(state => state);
+  const { activeStep } = UserFormReducer;
   const dispatch = useDispatch();
   const handleNextStep = () => {
     dispatch(handleActiveStepNext());
