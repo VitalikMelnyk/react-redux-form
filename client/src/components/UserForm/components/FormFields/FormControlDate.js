@@ -5,7 +5,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from "@material-ui/pickers";
-import { setField } from "../../../../../store/UserForm/PersonalDetails/actions";
+import { setPersonalField } from "../../../../store/UserForm/PersonalDetails/actions";
 
 export const FormControlDate = () => {
   const { PersonalDetailsReducer } = useSelector(state => state);
@@ -25,7 +25,7 @@ export const FormControlDate = () => {
         value={birthdayDate}
         InputAdornmentProps={{ position: "start" }}
         onChange={date =>
-          dispatch(setField({ name: "birthdayDate", value: date }))
+          dispatch(setPersonalField({ name: "birthdayDate", value: date }))
         }
       />
     </MuiPickersUtilsProvider>

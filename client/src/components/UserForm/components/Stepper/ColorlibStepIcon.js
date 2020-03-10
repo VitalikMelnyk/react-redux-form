@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Settings, GroupAdd, VideoLabel, AccountBox } from "@material-ui/icons";
+import { Settings, GroupAdd, AccountBox } from "@material-ui/icons";
 import { useColorlibStepIconStyles } from "./styles";
 
 export const ColorlibStepIcon = props => {
@@ -9,8 +9,7 @@ export const ColorlibStepIcon = props => {
   const icons = {
     1: <Settings />,
     2: <GroupAdd />,
-    3: <VideoLabel />,
-    4: <AccountBox />
+    3: <AccountBox />
   };
 
   return (

@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { PersonalDetailsReducer } from "./PersonalDetails/reducers";
+import { ContactDetailsReducer } from "./ContactDetails/reducers";
 import {
   ACTIVE_STEP_INCREMENT,
   ACTIVE_STEP_RESET,
@@ -21,7 +22,10 @@ const UserFormReducer = (state = initialState, { type, payload }) => {
     case ACTIVE_STEP_RESET:
       return { ...state, activeStep: (state.activeStep = 0) };
     case ADD_DATA_TO_ALL_INFORMATION:
-      return { ...state, allUserInformation: { payload } };
+      return {
+        ...state,
+        allUserInformation: { ...state.allUserInformation, ...payload }
+      };
     default:
       return state;
   }
@@ -29,7 +33,8 @@ const UserFormReducer = (state = initialState, { type, payload }) => {
 
 const rootReducer = combineReducers({
   UserFormReducer,
-  PersonalDetailsReducer
+  PersonalDetailsReducer,
+  ContactDetailsReducer
 });
 
 export default rootReducer;

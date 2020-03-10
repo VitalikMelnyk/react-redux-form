@@ -4,7 +4,7 @@ import { ColorlibStepIcon } from "./ColorlibStepIcon";
 import { useStyles, ColorlibConnector } from "./styles";
 
 const getSteps = () => {
-  return ["Personal", "Contact", "Official", "Payment"];
+  return ["Personal", "Contact", "Payment"];
 };
 const StepperComponent = ({activeStep}) => {
   const classes = useStyles();

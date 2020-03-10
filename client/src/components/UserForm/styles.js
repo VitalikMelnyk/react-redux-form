@@ -26,5 +26,46 @@ export const useStyles = makeStyles({
     border: "3px solid black",
     borderRadius: "20px",
     minHeight: "fit-content"
+  },
+  personalDetailsForm: {
+    padding: "20px 0"
+  },
+  credentialFields: {
+    display: "flex",
+    justifyContent: "space-around",
+    "& .MuiFormControl-root": {
+      margin: "10px"
+    }
+  },
+  contactFields: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    "& .MuiFormControl-root": {
+      margin: "10px 5px 20px"
+    }
+  },
+  credentialFieldItem: {
+    margin: "0 5px 0 10px",
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#787979",
+        borderWidth: "2px"
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "green",
+        borderWidth: "2px"
+      }
+    },
+    "& .MuiFormLabel-root": {
+      color: "white",
+      "&.Mui-focused": {
+        color: "green"
+      }
+    }
+  },
+  genderSelectItem: {
+    margin: "10px"
   }
 });

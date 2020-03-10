@@ -1,22 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Typography, Grid, Button, ButtonGroup } from "@material-ui/core";
+import { Typography, Grid } from "@material-ui/core";
 import StepperComponent from "./components/Stepper";
 import { useStyles } from "./styles";
 import PersonalDetails from "./components/PersonalDetails";
 import ContactDetails from "./components/ContactDetails";
-import OfficialDetails from "./components/OfficialDetails";
 import PaymentDetails from "./components/PaymentDetails";
 import Introduction from "./components/Introduction";
 import {
   handleActiveStepNext,
   handleActiveStepBack,
-  handleActiveStepReset
+  handleActiveStepReset,
+  addDataToAllInformation
 } from "../../store/UserForm/actions";
 
 const UserForm = () => {
   const classes = useStyles();
-  const { UserFormReducer } = useSelector(state => state);
+  const {
+    UserFormReducer,
+    PersonalDetailsReducer,
+    ContactDetailsReducer
+  } = useSelector(state => state);
   const { activeStep } = UserFormReducer;
   const dispatch = useDispatch();
   const handleNextStep = () => {
@@ -29,6 +33,12 @@ const UserForm = () => {
     dispatch(handleActiveStepReset());
   };
 
+  const handleSubmitDataToAllInformation = nameOfReducer => event => {
+    event.preventDefault();
+    dispatch(addDataToAllInformation(nameOfReducer));
+    handleNextStep();
+  };
+
   const getStepContent = () => {
     switch (activeStep) {
       case -1:
@@ -39,6 +49,9 @@ const UserForm = () => {
             formTitle="Personal Details:"
             handleNextStep={handleNextStep}
             handleResetStep={handleResetStep}
+            handleSubmitFormData={handleSubmitDataToAllInformation(
+              PersonalDetailsReducer
+            )}
           />
         );
       case 1:
@@ -48,12 +61,18 @@ const UserForm = () => {
             handleNextStep={handleNextStep}
             handleBackStep={handleBackStep}
             handleResetStep={handleResetStep}
+            handleSubmitFormData={handleSubmitDataToAllInformation(
+              ContactDetailsReducer
+            )}
           />
         );
       case 2:
-        return <OfficialDetails />;
-      case 3:
-        return <PaymentDetails />;
+        return (
+          <PaymentDetails
+            handleBackStep={handleBackStep}
+            handleResetStep={handleResetStep}
+          />
+        );
       default:
         return "Unknown step";
     }

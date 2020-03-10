@@ -1,4 +1,4 @@
-import { SET_FIELD } from "./actionTypes";
+import { SET_PERSONAL_FIELD } from "./actionTypes";
 
 const initialState = {
   firstName: "",
@@ -14,7 +14,7 @@ export const PersonalDetailsReducer = (
   { type, payload }
 ) => {
   switch (type) {
-    case SET_FIELD:
+    case SET_PERSONAL_FIELD:
       return { ...state, [payload.name]: payload.value };
     default:
       return state;

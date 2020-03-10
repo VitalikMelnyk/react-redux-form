@@ -1,23 +1,32 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useStyles } from "./styles";
-import { Button, ButtonGroup, Typography } from "@material-ui/core";
-import { FormControlText } from "./components/FormControlText";
-import { FormControlSelect } from "./components/FormControlSelect";
-import { FormControlDate } from "./components/FormControlDate";
-import { setField } from "../../../../store/UserForm/PersonalDetails/actions";
+import { useStyles } from "../../styles";
+import { Button, ButtonGroup } from "@material-ui/core";
+import {
+  FormControlDate,
+  FormControlSelect,
+  FormControlText
+} from "../FormFields";
+import { setPersonalField } from "../../../../store/UserForm/PersonalDetails/actions";
+import { FormTitle } from "../GeneralComponents/FormTitle";
 import { addDataToAllInformation } from "../../../../store/UserForm/actions";
 
-const PersonalDetails = ({ handleNextStep, handleResetStep, formTitle }) => {
+const PersonalDetails = ({
+  handleNextStep,
+  handleResetStep,
+  handleSubmitFormData,
+  formTitle
+}) => {
   const classes = useStyles();
   const { PersonalDetailsReducer } = useSelector(state => state);
   const { firstName, secondName, email, password } = PersonalDetailsReducer;
   const dispatch = useDispatch();
+
   const handleChangeField = name => event => {
     const value = event.target.value;
     const payload = { value, name };
     console.log(payload);
-    dispatch(setField(payload));
+    dispatch(setPersonalField(payload));
   };
   const handleSubmitPersonalDetails = event => {
     event.preventDefault();
@@ -26,13 +35,11 @@ const PersonalDetails = ({ handleNextStep, handleResetStep, formTitle }) => {
   };
   return (
     <>
-      <Typography component="h2" variant="h4" className="text-center">
-        {formTitle}
-      </Typography>
+      <FormTitle formTitle={formTitle} />
       <form
         action=""
         className={classes.personalDetailsForm}
-        onSubmit={handleSubmitPersonalDetails}
+        onSubmit={handleSubmitFormData}
       >
         <div className={classes.credentialFields}>
           <FormControlText
@@ -86,7 +93,7 @@ const PersonalDetails = ({ handleNextStep, handleResetStep, formTitle }) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={handleSubmitPersonalDetails}
+            onClick={handleSubmitFormData}
           >
             Next
           </Button>
