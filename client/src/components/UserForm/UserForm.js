@@ -76,7 +76,7 @@ const UserForm = () => {
       case 2:
         return (
           <PaymentDetails
-            formTitle="PaymentDetails:"
+            formTitle="Payment Details:"
             handleBackStep={handleBackStep}
             handleResetStep={handleResetStep}
             handleSubmit={sendDataToBackend(PaymentDetailsReducer)}
@@ -90,7 +90,7 @@ const UserForm = () => {
   return (
     <div>
       <Grid container className={classes.root}>
-        <Grid item xs={false} sm={4} md={7} className={classes.picture}></Grid>
+        {/* <Grid item xs={false} sm={4} md={7} className={classes.picture}></Grid> */}
         <Grid item xs={12} sm={8} md={5} className={classes.signUpContainer}>
           <div className={classes.signUpHeader}>
             <Typography

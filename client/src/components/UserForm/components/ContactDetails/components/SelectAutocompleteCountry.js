@@ -33,6 +33,7 @@ export const SelectAutocompleteCountry = () => {
       )}
       renderInput={params => (
         <TextField
+          fullWidth
           required
           {...params}
           label="Choose a country"

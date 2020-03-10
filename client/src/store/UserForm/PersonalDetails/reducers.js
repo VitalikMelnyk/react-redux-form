@@ -6,7 +6,8 @@ const initialState = {
   gender: "",
   birthdayDate: new Date(),
   email: "",
-  password: ""
+  password: "",
+  errors: []
 };
 
 export const PersonalDetailsReducer = (

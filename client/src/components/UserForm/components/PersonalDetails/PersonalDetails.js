@@ -19,14 +19,21 @@ const PersonalDetails = ({
 }) => {
   const classes = useStyles();
   const { PersonalDetailsReducer } = useSelector(state => state);
-  const { firstName, secondName, email, password } = PersonalDetailsReducer;
+  const {
+    firstName,
+    secondName,
+    email,
+    password,
+    errors
+  } = PersonalDetailsReducer;
   const dispatch = useDispatch();
   const handleChangeField = name => event => {
     const value = event.target.value;
     const payload = { value, name };
     console.log(payload);
+
     dispatch(setPersonalField(payload));
-  }
+  };
   return (
     <>
       <FormTitle formTitle={formTitle} />
@@ -38,6 +45,7 @@ const PersonalDetails = ({
         <div className={classes.credentialFields}>
           <FormControlText
             idName="firstName"
+            errors={errors}
             value={firstName}
             onChange={handleChangeField("firstName")}
             fullWidth={true}
@@ -45,6 +53,7 @@ const PersonalDetails = ({
             labelName="First Name"
           />
           <FormControlText
+            errors={errors}
             idName="secondName"
             value={secondName}
             onChange={handleChangeField("secondName")}
@@ -54,11 +63,15 @@ const PersonalDetails = ({
           />
         </div>
         <div className={classes.credentialFields}>
-          <FormControlSelect onChange={handleChangeField("gender")} />
+          <FormControlSelect
+            errors={errors}
+            onChange={handleChangeField("gender")}
+          />
           <FormControlDate />
         </div>
         <div className={classes.credentialFields}>
           <FormControlText
+            errors={errors}
             idName="email"
             value={email}
             onChange={handleChangeField("email")}
@@ -67,6 +80,7 @@ const PersonalDetails = ({
             type="email"
           />
           <FormControlText
+            errors={errors}
             idName="password"
             value={password}
             onChange={handleChangeField("password")}

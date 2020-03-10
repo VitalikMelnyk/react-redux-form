@@ -4,13 +4,17 @@ export const useStyles = makeStyles({
   root: {
     minHeight: "100vh",
     background: "#424242",
-    color: "white"
+    color: "white",
+    justifyContent: "center",
+    alignItems: 'center'
   },
   picture: {
     background: `url(${Picture}) center no-repeat`,
     backgroundSize: "cover"
   },
-  signUpContainer: {},
+  signUpContainer: {
+    
+  },
   signUpHeader: {
     margin: "45px 45px 0",
     textAlign: "center"

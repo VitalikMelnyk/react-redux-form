@@ -16,7 +16,7 @@ const ContactDetails = ({
 }) => {
   const classes = useStyles();
   const { ContactDetailsReducer } = useSelector(state => state);
-  const { telephoneNumber, address, city } = ContactDetailsReducer;
+  const { telephoneNumber, address, city, zipCode } = ContactDetailsReducer;
   const dispatch = useDispatch();
 
   const handleChangeField = name => event => {
@@ -29,26 +29,27 @@ const ContactDetails = ({
     <>
       <FormTitle formTitle={formTitle} />
       <form action="">
-        <div className={classes.formFields}>
-          <SelectAutocompleteCountry />
-          <div className={classes.credentialFields}>
-            <FormControlText
-              idName="city"
-              value={city}
-              onChange={handleChangeField("city")}
-              fullWidth={true}
-              labelName="City"
-              type="text"
-            />
-            <FormControlText
-              idName="telePhone"
-              value={telephoneNumber}
-              onChange={handleChangeField("telephoneNumber")}
-              fullWidth={true}
-              type="tel"
-              labelName="Telephone Number"
-            />
-          </div>
+        {/* <div className={classes.formFields}> */}
+        <div className={classes.credentialFields}>
+          <FormControlText
+            idName="city"
+            value={city}
+            onChange={handleChangeField("city")}
+            fullWidth={true}
+            labelName="City"
+            type="text"
+          />
+          <FormControlText
+            idName="telePhone"
+            value={telephoneNumber}
+            onChange={handleChangeField("telephoneNumber")}
+            fullWidth={true}
+            type="tel"
+            labelName="Telephone Number"
+          />
+        </div>
+        <SelectAutocompleteCountry />
+        <div className={classes.credentialFields}>
           <FormControlText
             idName="address"
             value={address}
@@ -57,6 +58,15 @@ const ContactDetails = ({
             labelName="Address"
             type="text"
           />
+          <FormControlText
+            idName="zipCode"
+            value={zipCode}
+            onChange={handleChangeField("zipCode")}
+            fullWidth={true}
+            labelName="Zip Code"
+            type="text"
+          />
+          {/* </div> */}
         </div>
         <ButtonGroup>
           <Button

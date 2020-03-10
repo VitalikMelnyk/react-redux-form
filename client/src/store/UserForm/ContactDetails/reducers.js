@@ -4,7 +4,8 @@ const initialState = {
   telephoneNumber: "",
   country: {},
   city: "",
-  address: ""
+  address: "",
+  zipCode: ""
 };
 
 export const ContactDetailsReducer = (

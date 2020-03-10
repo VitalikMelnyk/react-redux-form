@@ -8,11 +8,14 @@ export const FormControlText = ({
   fullWidth,
   type,
   value,
-  onChange
+  onChange,
+  errors
 }) => {
   const classes = useStyles();
   return (
     <TextField
+      // error={errors.length === 0 ? false : true}
+      // helperText={errors}
       classes={{
         root: classes.credentialFieldItem
       }}
@@ -21,7 +24,7 @@ export const FormControlText = ({
       type={type}
       id={idName}
       label={labelName}
-      variant="outlined"
+      variant="filled"
       value={value}
       onChange={onChange}
     />
