@@ -20,7 +20,8 @@ export const ColorlibConnector = withStyles({
     height: 3,
     border: 0,
     backgroundColor: "#eaeaf0",
-    borderRadius: 1
+    borderRadius: 1,
+    transition: "all .5s ease"
   }
 })(StepConnector);
 
@@ -34,7 +35,8 @@ export const useColorlibStepIconStyles = makeStyles({
     display: "flex",
     borderRadius: "50%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    transition: "all .4s ease"
   },
   active: {
     backgroundImage:
@@ -49,6 +51,7 @@ export const useColorlibStepIconStyles = makeStyles({
 
 export const useStyles = makeStyles({
   stepper: {
-    background: "transparent"
+    background: "transparent",
+    padding: "20px 0 0"
   }
 });

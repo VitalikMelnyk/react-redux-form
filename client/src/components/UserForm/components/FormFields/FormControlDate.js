@@ -19,7 +19,7 @@ export const FormControlDate = () => {
         openTo="year"
         views={["year", "month", "date"]}
         variant="inline"
-        inputVariant="outlined"
+        inputVariant="standard"
         label="Date of birth"
         format="dd/MM/yyyy"
         value={birthdayDate}

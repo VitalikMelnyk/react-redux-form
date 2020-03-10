@@ -28,7 +28,7 @@ const ContactDetails = ({
   return (
     <>
       <FormTitle formTitle={formTitle} />
-      <form action="">
+      <form action="" className={classes.DetailsForm}>
         {/* <div className={classes.formFields}> */}
         <div className={classes.credentialFields}>
           <FormControlText
@@ -48,7 +48,9 @@ const ContactDetails = ({
             labelName="Telephone Number"
           />
         </div>
-        <SelectAutocompleteCountry />
+        <div className={classes.credentialFields}>
+          <SelectAutocompleteCountry />
+        </div>
         <div className={classes.credentialFields}>
           <FormControlText
             idName="address"
@@ -68,6 +70,8 @@ const ContactDetails = ({
           />
           {/* </div> */}
         </div>
+      </form>
+      <ButtonGroup>
         <ButtonGroup>
           <Button
             variant="contained"
@@ -83,16 +87,16 @@ const ContactDetails = ({
           >
             Back
           </Button>
-
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSubmitFormData}
-          >
-            Next
-          </Button>
         </ButtonGroup>
-      </form>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSubmitFormData}
+        >
+          Next
+        </Button>
+      </ButtonGroup>
     </>
   );
 };

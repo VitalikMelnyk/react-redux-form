@@ -93,23 +93,19 @@ const UserForm = () => {
         {/* <Grid item xs={false} sm={4} md={7} className={classes.picture}></Grid> */}
         <Grid item xs={12} sm={8} md={5} className={classes.signUpContainer}>
           <div className={classes.signUpHeader}>
-            <Typography
-              component="h1"
-              variant="h4"
-              className={classes.signUpTitle}
-            >
-              Sign up to FInancial
-            </Typography>
-            <Typography
+            <h1 className={classes.signUpTitle}>Sign up to Financial</h1>
+            {/* <Typography
               component="p"
               variant="subtitle1"
               className={classes.signUpSubtitle}
             >
               Fill all form field to go next step
-            </Typography>
+            </Typography> */}
           </div>
-          <StepperComponent activeStep={activeStep} />
-          <div className={classes.signUpFormBox}>{getStepContent()}</div>
+          <div className={classes.signUpMain}>
+            <StepperComponent activeStep={activeStep} />
+            <div className={classes.signUpFormBox}>{getStepContent()}</div>
+          </div>
         </Grid>
       </Grid>
     </div>

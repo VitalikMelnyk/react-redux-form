@@ -3,35 +3,44 @@ import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles({
   root: {
     minHeight: "100vh",
-    background: "#424242",
+    background: "#383a4f",
+    fontWeight: "700",
     color: "white",
     justifyContent: "center",
-    alignItems: 'center'
+    alignItems: "center"
   },
-  picture: {
-    background: `url(${Picture}) center no-repeat`,
-    backgroundSize: "cover"
-  },
-  signUpContainer: {
-    
-  },
+  signUpContainer: {},
   signUpHeader: {
-    margin: "45px 45px 0",
+    margin: "40px  0 45px",
     textAlign: "center"
   },
+  signUpMain: {
+    background: "#525575",
+    // border: "5px solid white",
+    borderRadius: "30px",
+    boxShadow: "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+  },
   signUpTitle: {
+    // fontFamily: "'Open Sans' sans-serif",
+    fontSize: "35px",
+    fontWeight: "700",
     textTransform: "capitalize",
     color: "white"
   },
   signUpSubtitle: {},
   signUpFormBox: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
     margin: "10px",
     padding: "30px 10px 30px",
-    border: "3px solid black",
     borderRadius: "20px",
-    minHeight: "fit-content"
+    minHeight: "450px",
+    "& .MuiButtonGroup-root": {
+      justifyContent: "space-between"
+    }
   },
-  personalDetailsForm: {
+  DetailsForm: {
     padding: "20px 0"
   },
   credentialFields: {
@@ -56,7 +65,8 @@ export const useStyles = makeStyles({
     "& .MuiFormLabel-root": {
       textAlign: "center",
       fontWeight: "700"
-    }
+    },
+    
   },
   credentialFieldItem: {
     margin: "0 5px 0 10px",
@@ -70,10 +80,13 @@ export const useStyles = makeStyles({
         borderWidth: "2px"
       }
     },
+    ".MuiInput-underline:before": {
+      color: "#55e8d5"
+    },
     "& .MuiFormLabel-root": {
       color: "white",
       "&.Mui-focused": {
-        color: "green"
+        color: "#55e8d5"
       }
     }
   },

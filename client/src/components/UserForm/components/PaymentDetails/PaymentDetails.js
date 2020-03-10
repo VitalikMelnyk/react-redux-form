@@ -33,7 +33,7 @@ const PaymentDetails = ({
   return (
     <>
       <FormTitle formTitle={formTitle} />
-      <form action="" onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit} className={classes.DetailsForm}>
         <div className={classes.credentialFields}>
           <FormControlText
             idName="bankName"
@@ -76,8 +76,11 @@ const PaymentDetails = ({
             type="password"
           />
         </div>
+      </form>
+      <ButtonGroup>
         <ButtonGroup>
           <Button
+            classes={{ marginRight: 10 }}
             variant="contained"
             color="secondary"
             onClick={handleResetStep}
@@ -91,12 +94,12 @@ const PaymentDetails = ({
           >
             Back
           </Button>
-
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
-            Submit
-          </Button>
         </ButtonGroup>
-      </form>
+
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
+          Submit
+        </Button>
+      </ButtonGroup>
     </>
   );
 };

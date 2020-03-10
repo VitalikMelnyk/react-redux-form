@@ -24,7 +24,7 @@ export const FormControlText = ({
       type={type}
       id={idName}
       label={labelName}
-      variant="filled"
+      variant="standard"
       value={value}
       onChange={onChange}
     />

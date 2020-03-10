@@ -39,7 +39,7 @@ const PersonalDetails = ({
       <FormTitle formTitle={formTitle} />
       <form
         action=""
-        className={classes.personalDetailsForm}
+        className={classes.DetailsForm}
         onSubmit={handleSubmitFormData}
       >
         <div className={classes.credentialFields}>
@@ -89,6 +89,7 @@ const PersonalDetails = ({
             type="password"
           />
         </div>
+      </form>
         <ButtonGroup>
           <Button
             variant="contained"
@@ -106,7 +107,6 @@ const PersonalDetails = ({
             Next
           </Button>
         </ButtonGroup>
-      </form>
     </>
   );
 };

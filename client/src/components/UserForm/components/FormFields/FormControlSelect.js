@@ -12,7 +12,7 @@ export const FormControlSelect = ({ onChange }) => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
   return (
-    <FormControl required variant="outlined" fullWidth>
+    <FormControl required variant="standard" fullWidth>
       <InputLabel ref={inputLabel} id="gender">
         Gender
       </InputLabel>
