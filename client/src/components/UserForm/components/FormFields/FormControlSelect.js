@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Select, MenuItem, InputLabel, FormControl } from "@material-ui/core";
+import { genderOptions } from "../../../../shared";
 
 export const FormControlSelect = ({ onChange }) => {
   const { PersonalDetailsReducer } = useSelector(state => state);
@@ -23,11 +24,13 @@ export const FormControlSelect = ({ onChange }) => {
         labelWidth={labelWidth}
       >
         <MenuItem value="" disabled>
-          <em>Select your gender</em>
+          Select your gender
         </MenuItem>
-        <MenuItem value="male">Male</MenuItem>
-        <MenuItem value="female">Female</MenuItem>
-        <MenuItem value="other">Other</MenuItem>
+        {genderOptions.map(item => (
+          <MenuItem value={item.value} key={item.value}>
+            {item.label}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );

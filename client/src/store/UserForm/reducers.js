@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { PersonalDetailsReducer } from "./PersonalDetails/reducers";
 import { ContactDetailsReducer } from "./ContactDetails/reducers";
+import { PaymentDetailsReducer } from "./PaymentDetails/reducers";
 import {
   ACTIVE_STEP_INCREMENT,
   ACTIVE_STEP_RESET,
@@ -34,7 +35,8 @@ const UserFormReducer = (state = initialState, { type, payload }) => {
 const rootReducer = combineReducers({
   UserFormReducer,
   PersonalDetailsReducer,
-  ContactDetailsReducer
+  ContactDetailsReducer,
+  PaymentDetailsReducer
 });
 
 export default rootReducer;

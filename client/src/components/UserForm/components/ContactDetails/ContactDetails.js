@@ -29,16 +29,26 @@ const ContactDetails = ({
     <>
       <FormTitle formTitle={formTitle} />
       <form action="">
-        <div className={classes.contactFields}>
+        <div className={classes.formFields}>
           <SelectAutocompleteCountry />
-          <FormControlText
-            idName="city"
-            value={city}
-            onChange={handleChangeField("city")}
-            fullWidth={true}
-            labelName="City"
-            type="text"
-          />
+          <div className={classes.credentialFields}>
+            <FormControlText
+              idName="city"
+              value={city}
+              onChange={handleChangeField("city")}
+              fullWidth={true}
+              labelName="City"
+              type="text"
+            />
+            <FormControlText
+              idName="telePhone"
+              value={telephoneNumber}
+              onChange={handleChangeField("telephoneNumber")}
+              fullWidth={true}
+              type="tel"
+              labelName="Telephone Number"
+            />
+          </div>
           <FormControlText
             idName="address"
             value={address}
@@ -46,14 +56,6 @@ const ContactDetails = ({
             fullWidth={true}
             labelName="Address"
             type="text"
-          />
-          <FormControlText
-            idName="telePhone"
-            value={telephoneNumber}
-            onChange={handleChangeField("telephoneNumber")}
-            fullWidth={true}
-            type="tel"
-            labelName="Telephone Number"
           />
         </div>
         <ButtonGroup>

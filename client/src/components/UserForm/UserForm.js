@@ -19,7 +19,8 @@ const UserForm = () => {
   const {
     UserFormReducer,
     PersonalDetailsReducer,
-    ContactDetailsReducer
+    ContactDetailsReducer,
+    PaymentDetailsReducer
   } = useSelector(state => state);
   const { activeStep } = UserFormReducer;
   const dispatch = useDispatch();
@@ -37,6 +38,12 @@ const UserForm = () => {
     event.preventDefault();
     dispatch(addDataToAllInformation(nameOfReducer));
     handleNextStep();
+  };
+
+  const sendDataToBackend = nameOfReducer => event => {
+    event.preventDefault();
+    dispatch(addDataToAllInformation(nameOfReducer));
+    alert(JSON.stringify(UserFormReducer, null, 4));
   };
 
   const getStepContent = () => {
@@ -69,8 +76,10 @@ const UserForm = () => {
       case 2:
         return (
           <PaymentDetails
+            formTitle="PaymentDetails:"
             handleBackStep={handleBackStep}
             handleResetStep={handleResetStep}
+            handleSubmit={sendDataToBackend(PaymentDetailsReducer)}
           />
         );
       default:

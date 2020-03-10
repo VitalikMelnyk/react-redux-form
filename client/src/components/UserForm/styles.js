@@ -22,7 +22,7 @@ export const useStyles = makeStyles({
   signUpSubtitle: {},
   signUpFormBox: {
     margin: "10px",
-    padding: "50px 10px 30px",
+    padding: "30px 10px 30px",
     border: "3px solid black",
     borderRadius: "20px",
     minHeight: "fit-content"
@@ -37,13 +37,21 @@ export const useStyles = makeStyles({
       margin: "10px"
     }
   },
-  contactFields: {
+  formFields: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     "& .MuiFormControl-root": {
       margin: "10px 5px 20px"
+    },
+    "& .MuiFormGroup-root": {
+      flexDirection: "row",
+      justifyContent: "center"
+    },
+    "& .MuiFormLabel-root": {
+      textAlign: "center",
+      fontWeight: "700"
     }
   },
   credentialFieldItem: {

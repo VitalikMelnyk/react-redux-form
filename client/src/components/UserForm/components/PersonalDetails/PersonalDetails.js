@@ -21,18 +21,12 @@ const PersonalDetails = ({
   const { PersonalDetailsReducer } = useSelector(state => state);
   const { firstName, secondName, email, password } = PersonalDetailsReducer;
   const dispatch = useDispatch();
-
   const handleChangeField = name => event => {
     const value = event.target.value;
     const payload = { value, name };
     console.log(payload);
     dispatch(setPersonalField(payload));
-  };
-  const handleSubmitPersonalDetails = event => {
-    event.preventDefault();
-    dispatch(addDataToAllInformation(PersonalDetailsReducer));
-    handleNextStep();
-  };
+  }
   return (
     <>
       <FormTitle formTitle={formTitle} />

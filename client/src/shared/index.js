@@ -256,3 +256,15 @@ export const countriesList = [
   { code: "ZM", label: "Zambia", phone: "260" },
   { code: "ZW", label: "Zimbabwe", phone: "263" }
 ];
+
+export const radioItems = [
+  { value: "Master Card", label: "Master Card" },
+  { value: "Visa Card", label: "Visa Card" },
+  { value: "other", label: "Other" }
+];
+
+export const genderOptions = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "other", label: "Other" }
+];
