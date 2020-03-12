@@ -3,6 +3,7 @@ import { TextField } from "@material-ui/core";
 import { useStyles } from "../../styles";
 
 export const FormControlText = ({
+  maxLength = 25,
   idName,
   labelName,
   fullWidth,
@@ -14,6 +15,7 @@ export const FormControlText = ({
   const classes = useStyles();
   return (
     <TextField
+      inputProps={{ maxLength: maxLength }}
       classes={{
         root: classes.credentialFieldItem
       }}

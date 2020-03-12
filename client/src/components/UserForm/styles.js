@@ -1,10 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
-export const useStyles = makeStyles({
+export const useStyles = makeStyles(theme => ({
   root: {
     minHeight: "100vh",
     background: "#383a4f",
     fontWeight: "700",
-    color: "white",
+    // color: "white",
     justifyContent: "center",
     alignItems: "center"
   },
@@ -24,7 +24,7 @@ export const useStyles = makeStyles({
     fontSize: "35px",
     fontWeight: "700",
     textTransform: "capitalize",
-    color: "white"
+    // color: "white"
   },
   signUpSubtitle: {},
   signUpFormBox: {
@@ -79,16 +79,16 @@ export const useStyles = makeStyles({
       }
     },
     ".MuiInput-underline:before": {
-      color: "#55e8d5"
+      // color: "#55e8d5"
     },
     "& .MuiFormLabel-root": {
-      color: "white",
+      // color: "white",
       "&.Mui-focused": {
-        color: "#55e8d5"
+        // color: "#55e8d5"
       }
     }
   },
   genderSelectItem: {
     margin: "10px"
   }
-});
+}));

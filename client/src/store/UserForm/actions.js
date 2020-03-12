@@ -2,7 +2,8 @@ import {
   ACTIVE_STEP_INCREMENT,
   ACTIVE_STEP_DECRAMENT,
   ADD_DATA_TO_ALL_INFORMATION,
-  RESET_ALL_FORM
+  RESET_ALL_FORM,
+  SET_THEME_TYPE
 } from "./actionTypes";
 
 export const handleActiveStepNext = payload => ({
@@ -19,5 +20,10 @@ export const handleResetAllForm = payload => ({
 
 export const addDataToAllInformation = payload => ({
   type: ADD_DATA_TO_ALL_INFORMATION,
+  payload
+});
+
+export const setThemeType = payload => ({
+  type: SET_THEME_TYPE,
   payload
 });

@@ -6,7 +6,7 @@ const Congratulation = ({ handleResetAllForm }) => {
   const classes = useStyles();
   return (
     <div className={classes.congratulationBox}>
-      <h2>Congratulations!</h2>
+      <h2 className={classes.congratulationTitle}>Congratulations!</h2>
       <ButtonGroup>
         <Button
           variant="contained"

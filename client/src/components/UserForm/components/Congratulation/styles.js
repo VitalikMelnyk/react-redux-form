@@ -5,5 +5,8 @@ export const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
+  },
+  congratulationTitle: {
+    margin: "15px"
   }
 });

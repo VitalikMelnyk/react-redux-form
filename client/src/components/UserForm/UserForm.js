@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Grid } from "@material-ui/core";
+import { Grid, FormControlLabel, Switch, Typography } from "@material-ui/core";
 import StepperComponent from "./components/Stepper";
 import { useStyles } from "./styles";
 import PersonalDetails from "./components/PersonalDetails";
@@ -28,8 +28,8 @@ import {
   handleResetAllForm
 } from "../../store/UserForm/actions";
 
-const UserForm = () => {
-  const classes = useStyles();
+const UserForm = ({ toggleTheme, checkedSwitch, theme }) => {
+  const classes = useStyles(theme);
   const {
     UserFormReducer,
     PersonalDetailsReducer,
@@ -90,7 +90,7 @@ const UserForm = () => {
         case PaymentDetailsReducer:
           dispatch(addDataToAllInformation(nameOfReducer));
           handleNextStep();
-          alert(JSON.stringify(UserFormReducer, null, 4));
+          // alert(JSON.stringify(UserFormReducer, null, 4));
           break;
         default:
           break;
@@ -148,7 +148,19 @@ const UserForm = () => {
       <Grid container className={classes.root}>
         <Grid item xs={12} sm={8} md={5} className={classes.signUpContainer}>
           <div className={classes.signUpHeader}>
-            <h1 className={classes.signUpTitle}>Sign up to Financial</h1>
+            <Typography
+              color="textPrimary"
+              variant="h1"
+              className={classes.signUpTitle}
+            >
+              Sign up to Financial
+            </Typography>
+            <FormControlLabel
+              control={
+                <Switch checked={checkedSwitch} onChange={toggleTheme} />
+              }
+              label="Switch Theme"
+            />
           </div>
           <div className={classes.signUpMain}>
             <StepperComponent activeStep={activeStep} />

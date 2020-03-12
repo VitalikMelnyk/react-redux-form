@@ -64,6 +64,7 @@ const PaymentDetails = ({
         </div>
         <div className={classes.credentialFields}>
           <FormControlText
+            // maxLength={16}
             errors={errors}
             idName="cardNumber"
             value={cardNumber}
@@ -73,6 +74,7 @@ const PaymentDetails = ({
             type="password"
           />
           <FormControlText
+            maxLength={4}
             errors={errors}
             idName="cvcCode"
             value={cvcCode}
