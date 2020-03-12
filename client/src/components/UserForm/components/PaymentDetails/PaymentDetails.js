@@ -20,7 +20,8 @@ const PaymentDetails = ({
     holderName,
     paymentType,
     cardNumber,
-    cvcCode
+    cvcCode,
+    errors
   } = PaymentDetailsReducer;
   const dispatch = useDispatch();
 
@@ -36,6 +37,7 @@ const PaymentDetails = ({
       <form action="" onSubmit={handleSubmit} className={classes.DetailsForm}>
         <div className={classes.credentialFields}>
           <FormControlText
+            errors={errors}
             idName="bankName"
             value={bankName}
             onChange={handleChangeField("bankName")}
@@ -44,6 +46,7 @@ const PaymentDetails = ({
             type="text"
           />
           <FormControlText
+            errors={errors}
             idName="holderName"
             value={holderName}
             onChange={handleChangeField("holderName")}
@@ -54,12 +57,14 @@ const PaymentDetails = ({
         </div>
         <div className={classes.formFields}>
           <FormControlRadio
+            errors={errors}
             value={paymentType}
             onChange={handleChangeField("paymentType")}
           />
         </div>
         <div className={classes.credentialFields}>
           <FormControlText
+            errors={errors}
             idName="cardNumber"
             value={cardNumber}
             onChange={handleChangeField("cardNumber")}
@@ -68,6 +73,7 @@ const PaymentDetails = ({
             type="password"
           />
           <FormControlText
+            errors={errors}
             idName="cvcCode"
             value={cvcCode}
             onChange={handleChangeField("cvcCode")}
@@ -80,7 +86,6 @@ const PaymentDetails = ({
       <ButtonGroup>
         <ButtonGroup>
           <Button
-            classes={{ marginRight: 10 }}
             variant="contained"
             color="secondary"
             onClick={handleResetStep}

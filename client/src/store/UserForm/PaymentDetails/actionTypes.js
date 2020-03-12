@@ -1,1 +1,0 @@
-export const SET_PAYMENT_FIELD = "SET_PAYMENT_FIELD";

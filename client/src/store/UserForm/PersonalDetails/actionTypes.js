@@ -1,1 +1,0 @@
-export const SET_PERSONAL_FIELD = "SET_PERSONAL_FIELD";

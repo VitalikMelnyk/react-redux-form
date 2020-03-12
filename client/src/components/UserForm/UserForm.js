@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Typography, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import StepperComponent from "./components/Stepper";
 import { useStyles } from "./styles";
 import PersonalDetails from "./components/PersonalDetails";
@@ -13,6 +13,11 @@ import {
   handleActiveStepReset,
   addDataToAllInformation
 } from "../../store/UserForm/actions";
+import { validateSchema } from "../../utils/validate";
+import { setPersonalErrors } from "../../store/UserForm/PersonalDetails/actions";
+import { setContactErrors } from "../../store/UserForm/ContactDetails/actions";
+import { setPaymentErrors } from "../../store/UserForm/PaymentDetails/actions";
+import Congratulation from "./components/Congratulation";
 
 const UserForm = () => {
   const classes = useStyles();
@@ -33,18 +38,63 @@ const UserForm = () => {
   const handleResetStep = () => {
     dispatch(handleActiveStepReset());
   };
-
   const handleSubmitDataToAllInformation = nameOfReducer => event => {
     event.preventDefault();
-    dispatch(addDataToAllInformation(nameOfReducer));
-    handleNextStep();
+    console.log(nameOfReducer);
+    const errors = validateSchema(nameOfReducer);
+    console.log(errors);
+    console.log(Object.keys(errors).length);
+    if (Object.keys(errors).length) {
+      switch (nameOfReducer) {
+        case PersonalDetailsReducer:
+          dispatch(setPersonalErrors(errors));
+          break;
+        case ContactDetailsReducer:
+          dispatch(setContactErrors(errors));
+          break;
+        case PaymentDetailsReducer:
+          dispatch(setPaymentErrors(errors));
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (nameOfReducer) {
+        case PersonalDetailsReducer:
+          dispatch(addDataToAllInformation(nameOfReducer));
+          handleNextStep();
+          break;
+        case ContactDetailsReducer:
+          dispatch(addDataToAllInformation(nameOfReducer));
+          handleNextStep();
+          break;
+        case PaymentDetailsReducer:
+          dispatch(addDataToAllInformation(nameOfReducer));
+          alert(JSON.stringify(UserFormReducer, null, 4));
+          handleNextStep();
+          break;
+        default:
+          break;
+      }
+    }
   };
 
-  const sendDataToBackend = nameOfReducer => event => {
-    event.preventDefault();
-    dispatch(addDataToAllInformation(nameOfReducer));
-    alert(JSON.stringify(UserFormReducer, null, 4));
-  };
+  // const sendDataToBackend = nameOfReducer => event => {
+  //   event.preventDefault();
+  //   console.log(nameOfReducer);
+  //   const errors = validateSchema(nameOfReducer);
+  //   console.log(errors);
+  //   console.log(Object.keys(errors).length);
+  //   if (Object.keys(errors).length) {
+  //     switch (nameOfReducer) {
+  //       default:
+  //         break;
+  //     }
+  //   } else {
+  //     dispatch(addDataToAllInformation(nameOfReducer));
+  //     alert(JSON.stringify(UserFormReducer, null, 4));
+  //   }
+  // };
 
   const getStepContent = () => {
     switch (activeStep) {
@@ -79,9 +129,13 @@ const UserForm = () => {
             formTitle="Payment Details:"
             handleBackStep={handleBackStep}
             handleResetStep={handleResetStep}
-            handleSubmit={sendDataToBackend(PaymentDetailsReducer)}
+            handleSubmit={handleSubmitDataToAllInformation(
+              PaymentDetailsReducer
+            )}
           />
         );
+      case 3:
+        return <Congratulation />;
       default:
         return "Unknown step";
     }
@@ -90,17 +144,9 @@ const UserForm = () => {
   return (
     <div>
       <Grid container className={classes.root}>
-        {/* <Grid item xs={false} sm={4} md={7} className={classes.picture}></Grid> */}
         <Grid item xs={12} sm={8} md={5} className={classes.signUpContainer}>
           <div className={classes.signUpHeader}>
             <h1 className={classes.signUpTitle}>Sign up to Financial</h1>
-            {/* <Typography
-              component="p"
-              variant="subtitle1"
-              className={classes.signUpSubtitle}
-            >
-              Fill all form field to go next step
-            </Typography> */}
           </div>
           <div className={classes.signUpMain}>
             <StepperComponent activeStep={activeStep} />

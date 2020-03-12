@@ -27,6 +27,7 @@ const UserFormReducer = (state = initialState, { type, payload }) => {
         ...state,
         allUserInformation: { ...state.allUserInformation, ...payload }
       };
+
     default:
       return state;
   }

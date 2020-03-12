@@ -14,11 +14,10 @@ export const FormControlText = ({
   const classes = useStyles();
   return (
     <TextField
-      // error={errors.length === 0 ? false : true}
-      // helperText={errors}
       classes={{
         root: classes.credentialFieldItem
       }}
+      error={errors[idName] ? true : false}
       fullWidth={fullWidth}
       required
       type={type}
@@ -27,6 +26,7 @@ export const FormControlText = ({
       variant="standard"
       value={value}
       onChange={onChange}
+      helperText={errors[idName]}
     />
   );
 };

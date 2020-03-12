@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Select, MenuItem, InputLabel, FormControl } from "@material-ui/core";
+import {
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  FormHelperText
+} from "@material-ui/core";
 import { genderOptions } from "../../../../shared";
+import { useStyles } from "./styles";
 
-export const FormControlSelect = ({ onChange }) => {
+export const FormControlSelect = ({ onChange, errors, idName }) => {
+  const classes = useStyles();
   const { PersonalDetailsReducer } = useSelector(state => state);
   const { gender } = PersonalDetailsReducer;
   const inputLabel = useRef(null);
@@ -12,13 +20,19 @@ export const FormControlSelect = ({ onChange }) => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
   return (
-    <FormControl required variant="standard" fullWidth>
-      <InputLabel ref={inputLabel} id="gender">
+    <FormControl
+      className={classes.genderLabel}
+      error={errors[idName] ? true : false}
+      required
+      variant="standard"
+      fullWidth
+    >
+      <InputLabel ref={inputLabel} id={idName}>
         Gender
       </InputLabel>
       <Select
-        labelId="gender"
-        id="gender"
+        labelId={idName}
+        id={idName}
         value={gender}
         onChange={onChange}
         labelWidth={labelWidth}
@@ -32,6 +46,7 @@ export const FormControlSelect = ({ onChange }) => {
           </MenuItem>
         ))}
       </Select>
+      <FormHelperText>{errors[idName]}</FormHelperText>
     </FormControl>
   );
 };

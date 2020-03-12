@@ -1,1 +1,0 @@
-export const SET_CONTACT_FIELD = "SET_CONTACT_FIELD";

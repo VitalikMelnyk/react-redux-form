@@ -9,10 +9,8 @@ import {
 } from "../FormFields";
 import { setPersonalField } from "../../../../store/UserForm/PersonalDetails/actions";
 import { FormTitle } from "../GeneralComponents/FormTitle";
-import { addDataToAllInformation } from "../../../../store/UserForm/actions";
 
 const PersonalDetails = ({
-  handleNextStep,
   handleResetStep,
   handleSubmitFormData,
   formTitle
@@ -64,6 +62,7 @@ const PersonalDetails = ({
         </div>
         <div className={classes.credentialFields}>
           <FormControlSelect
+            idName="gender"
             errors={errors}
             onChange={handleChangeField("gender")}
           />
@@ -90,23 +89,19 @@ const PersonalDetails = ({
           />
         </div>
       </form>
-        <ButtonGroup>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleResetStep}
-          >
-            Reset Steps
-          </Button>
+      <ButtonGroup>
+        <Button variant="contained" color="secondary" onClick={handleResetStep}>
+          Reset Steps
+        </Button>
 
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSubmitFormData}
-          >
-            Next
-          </Button>
-        </ButtonGroup>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSubmitFormData}
+        >
+          Next
+        </Button>
+      </ButtonGroup>
     </>
   );
 };

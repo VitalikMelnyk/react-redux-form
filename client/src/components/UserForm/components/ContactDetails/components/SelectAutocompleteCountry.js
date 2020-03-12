@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { countriesList } from "../../../../../shared";
 import { setContactField } from "../../../../../store/UserForm/ContactDetails/actions";
-export const SelectAutocompleteCountry = () => {
+export const SelectAutocompleteCountry = ({ errors, idName }) => {
   const { ContactDetailsReducer } = useSelector(state => state);
   const { country } = ContactDetailsReducer;
   const dispatch = useDispatch();
@@ -33,11 +33,14 @@ export const SelectAutocompleteCountry = () => {
       )}
       renderInput={params => (
         <TextField
+          error={errors[idName] ? true : false}
+          helperText={errors[idName]}
           fullWidth
           required
+          id={idName}
           {...params}
           label="Choose a country"
-          variant="outlined"
+          variant="standard"
           inputProps={{
             ...params.inputProps
           }}

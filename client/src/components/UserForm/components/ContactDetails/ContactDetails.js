@@ -16,7 +16,13 @@ const ContactDetails = ({
 }) => {
   const classes = useStyles();
   const { ContactDetailsReducer } = useSelector(state => state);
-  const { telephoneNumber, address, city, zipCode } = ContactDetailsReducer;
+  const {
+    telephoneNumber,
+    address,
+    city,
+    zipCode,
+    errors
+  } = ContactDetailsReducer;
   const dispatch = useDispatch();
 
   const handleChangeField = name => event => {
@@ -32,6 +38,7 @@ const ContactDetails = ({
         {/* <div className={classes.formFields}> */}
         <div className={classes.credentialFields}>
           <FormControlText
+            errors={errors}
             idName="city"
             value={city}
             onChange={handleChangeField("city")}
@@ -40,7 +47,8 @@ const ContactDetails = ({
             type="text"
           />
           <FormControlText
-            idName="telePhone"
+            errors={errors}
+            idName="telephoneNumber"
             value={telephoneNumber}
             onChange={handleChangeField("telephoneNumber")}
             fullWidth={true}
@@ -49,10 +57,11 @@ const ContactDetails = ({
           />
         </div>
         <div className={classes.credentialFields}>
-          <SelectAutocompleteCountry />
+          <SelectAutocompleteCountry errors={errors} idName="country" />
         </div>
         <div className={classes.credentialFields}>
           <FormControlText
+            errors={errors}
             idName="address"
             value={address}
             onChange={handleChangeField("address")}
@@ -61,6 +70,7 @@ const ContactDetails = ({
             type="text"
           />
           <FormControlText
+            errors={errors}
             idName="zipCode"
             value={zipCode}
             onChange={handleChangeField("zipCode")}

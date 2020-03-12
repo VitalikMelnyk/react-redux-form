@@ -1,4 +1,3 @@
-import Picture from "../../assets/background.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles({
   root: {
@@ -65,8 +64,7 @@ export const useStyles = makeStyles({
     "& .MuiFormLabel-root": {
       textAlign: "center",
       fontWeight: "700"
-    },
-    
+    }
   },
   credentialFieldItem: {
     margin: "0 5px 0 10px",
