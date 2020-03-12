@@ -11,7 +11,7 @@ import { setPersonalField } from "../../../../store/UserForm/PersonalDetails/act
 import { FormTitle } from "../GeneralComponents/FormTitle";
 
 const PersonalDetails = ({
-  handleResetStep,
+  handleResetCurrentStep,
   handleSubmitFormData,
   formTitle
 }) => {
@@ -90,8 +90,12 @@ const PersonalDetails = ({
         </div>
       </form>
       <ButtonGroup>
-        <Button variant="contained" color="secondary" onClick={handleResetStep}>
-          Reset Steps
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleResetCurrentStep}
+        >
+          Reset
         </Button>
 
         <Button

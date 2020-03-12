@@ -10,7 +10,7 @@ import { FormControlRadio } from "../FormFields/FormControlRadio";
 const PaymentDetails = ({
   formTitle,
   handleBackStep,
-  handleResetStep,
+  handleResetCurrentStep,
   handleSubmit
 }) => {
   const classes = useStyles();
@@ -88,9 +88,9 @@ const PaymentDetails = ({
           <Button
             variant="contained"
             color="secondary"
-            onClick={handleResetStep}
+            onClick={handleResetCurrentStep}
           >
-            Reset Steps
+            Reset
           </Button>
           <Button
             variant="contained"

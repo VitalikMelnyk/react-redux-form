@@ -1,4 +1,8 @@
-import { SET_PAYMENT_FIELD, SET_PAYMENT_ERRORS } from "../actionTypes";
+import {
+  SET_PAYMENT_FIELD,
+  SET_PAYMENT_ERRORS,
+  RESET_PAYMENT_STEP
+} from "../actionTypes";
 export const setPaymentField = payload => ({
   type: SET_PAYMENT_FIELD,
   payload
@@ -6,5 +10,10 @@ export const setPaymentField = payload => ({
 
 export const setPaymentErrors = payload => ({
   type: SET_PAYMENT_ERRORS,
+  payload
+});
+
+export const resetPaymentStep = payload => ({
+  type: RESET_PAYMENT_STEP,
   payload
 });

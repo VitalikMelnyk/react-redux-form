@@ -10,7 +10,7 @@ import { SelectAutocompleteCountry } from "./components/SelectAutocompleteCountr
 const ContactDetails = ({
   handleNextStep,
   handleBackStep,
-  handleResetStep,
+  handleResetCurrentStep,
   handleSubmitFormData,
   formTitle
 }) => {
@@ -86,9 +86,9 @@ const ContactDetails = ({
           <Button
             variant="contained"
             color="secondary"
-            onClick={handleResetStep}
+            onClick={handleResetCurrentStep}
           >
-            Reset Steps
+            Reset
           </Button>
           <Button
             variant="contained"

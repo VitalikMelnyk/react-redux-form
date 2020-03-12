@@ -4,9 +4,9 @@ import { ContactDetailsReducer } from "./ContactDetails/reducers";
 import { PaymentDetailsReducer } from "./PaymentDetails/reducers";
 import {
   ACTIVE_STEP_INCREMENT,
-  ACTIVE_STEP_RESET,
   ACTIVE_STEP_DECRAMENT,
-  ADD_DATA_TO_ALL_INFORMATION
+  ADD_DATA_TO_ALL_INFORMATION,
+  RESET_ALL_FORM
 } from "./actionTypes";
 
 const initialState = {
@@ -20,8 +20,8 @@ const UserFormReducer = (state = initialState, { type, payload }) => {
       return { ...state, activeStep: state.activeStep + 1 };
     case ACTIVE_STEP_DECRAMENT:
       return { ...state, activeStep: state.activeStep - 1 };
-    case ACTIVE_STEP_RESET:
-      return { ...state, activeStep: (state.activeStep = 0) };
+    case RESET_ALL_FORM:
+      return initialState;
     case ADD_DATA_TO_ALL_INFORMATION:
       return {
         ...state,

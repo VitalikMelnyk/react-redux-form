@@ -11,10 +11,6 @@ export const validateSchema = values => {
       errors[field] = "Required";
     }
   });
-
-  // if (values.birthdayDate === "invalid Date") {
-  //   errors.birthdayDate = "invalid date";
-  // }
   if (
     values.email &&
     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
@@ -27,9 +23,6 @@ export const validateSchema = values => {
 
   if (values.telephoneNumber && isNaN(values.telephoneNumber)) {
     errors.telephoneNumber = "Must be a number";
-    // if (values.telephoneNumber.length < 10) {
-    //   errors.telephoneNumber = "Minimum 10 digits";
-    // }
   }
   return errors;
 };

@@ -7,17 +7,26 @@ import PersonalDetails from "./components/PersonalDetails";
 import ContactDetails from "./components/ContactDetails";
 import PaymentDetails from "./components/PaymentDetails";
 import Introduction from "./components/Introduction";
+import Congratulation from "./components/Congratulation";
+import { validateSchema } from "../../utils/validate";
+import {
+  setPersonalErrors,
+  resetPersonalStep
+} from "../../store/UserForm/PersonalDetails/actions";
+import {
+  setContactErrors,
+  resetContactStep
+} from "../../store/UserForm/ContactDetails/actions";
+import {
+  setPaymentErrors,
+  resetPaymentStep
+} from "../../store/UserForm/PaymentDetails/actions";
 import {
   handleActiveStepNext,
   handleActiveStepBack,
-  handleActiveStepReset,
-  addDataToAllInformation
+  addDataToAllInformation,
+  handleResetAllForm
 } from "../../store/UserForm/actions";
-import { validateSchema } from "../../utils/validate";
-import { setPersonalErrors } from "../../store/UserForm/PersonalDetails/actions";
-import { setContactErrors } from "../../store/UserForm/ContactDetails/actions";
-import { setPaymentErrors } from "../../store/UserForm/PaymentDetails/actions";
-import Congratulation from "./components/Congratulation";
 
 const UserForm = () => {
   const classes = useStyles();
@@ -35,8 +44,18 @@ const UserForm = () => {
   const handleBackStep = () => {
     dispatch(handleActiveStepBack());
   };
-  const handleResetStep = () => {
-    dispatch(handleActiveStepReset());
+  const handleResetPersonalStep = () => {
+    dispatch(resetPersonalStep());
+  };
+  const handleResetContactStep = () => {
+    dispatch(resetContactStep());
+  };
+  const handleResetPaymentStep = () => {
+    dispatch(resetPaymentStep());
+  };
+
+  const handleResetForm = () => {
+    dispatch(handleResetAllForm());
   };
   const handleSubmitDataToAllInformation = nameOfReducer => event => {
     event.preventDefault();
@@ -70,31 +89,14 @@ const UserForm = () => {
           break;
         case PaymentDetailsReducer:
           dispatch(addDataToAllInformation(nameOfReducer));
-          alert(JSON.stringify(UserFormReducer, null, 4));
           handleNextStep();
+          alert(JSON.stringify(UserFormReducer, null, 4));
           break;
         default:
           break;
       }
     }
   };
-
-  // const sendDataToBackend = nameOfReducer => event => {
-  //   event.preventDefault();
-  //   console.log(nameOfReducer);
-  //   const errors = validateSchema(nameOfReducer);
-  //   console.log(errors);
-  //   console.log(Object.keys(errors).length);
-  //   if (Object.keys(errors).length) {
-  //     switch (nameOfReducer) {
-  //       default:
-  //         break;
-  //     }
-  //   } else {
-  //     dispatch(addDataToAllInformation(nameOfReducer));
-  //     alert(JSON.stringify(UserFormReducer, null, 4));
-  //   }
-  // };
 
   const getStepContent = () => {
     switch (activeStep) {
@@ -105,7 +107,7 @@ const UserForm = () => {
           <PersonalDetails
             formTitle="Personal Details:"
             handleNextStep={handleNextStep}
-            handleResetStep={handleResetStep}
+            handleResetCurrentStep={handleResetPersonalStep}
             handleSubmitFormData={handleSubmitDataToAllInformation(
               PersonalDetailsReducer
             )}
@@ -117,7 +119,7 @@ const UserForm = () => {
             formTitle="Contact Details:"
             handleNextStep={handleNextStep}
             handleBackStep={handleBackStep}
-            handleResetStep={handleResetStep}
+            handleResetCurrentStep={handleResetContactStep}
             handleSubmitFormData={handleSubmitDataToAllInformation(
               ContactDetailsReducer
             )}
@@ -128,14 +130,14 @@ const UserForm = () => {
           <PaymentDetails
             formTitle="Payment Details:"
             handleBackStep={handleBackStep}
-            handleResetStep={handleResetStep}
+            handleResetCurrentStep={handleResetPaymentStep}
             handleSubmit={handleSubmitDataToAllInformation(
               PaymentDetailsReducer
             )}
           />
         );
       case 3:
-        return <Congratulation />;
+        return <Congratulation handleResetAllForm={handleResetForm} />;
       default:
         return "Unknown step";
     }

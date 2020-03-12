@@ -1,5 +1,11 @@
-import { SET_PERSONAL_FIELD, SET_PERSONAL_ERRORS } from "../actionTypes";
-import { ACTIVE_STEP_INCREMENT, ACTIVE_STEP_DECRAMENT } from "../actionTypes";
+import {
+  SET_PERSONAL_FIELD,
+  SET_PERSONAL_ERRORS,
+  ACTIVE_STEP_DECRAMENT,
+  ACTIVE_STEP_INCREMENT,
+  RESET_ALL_FORM,
+  RESET_PERSONAL_STEP
+} from "../actionTypes";
 
 const initialState = {
   firstName: "",
@@ -24,6 +30,10 @@ export const PersonalDetailsReducer = (
       return { ...state, errors: {} };
     case ACTIVE_STEP_DECRAMENT:
       return { ...state, errors: {} };
+    case RESET_PERSONAL_STEP:
+      return initialState;
+    case RESET_ALL_FORM:
+      return initialState;
     default:
       return state;
   }
