@@ -1,12 +1,14 @@
 import React from "react";
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button, ButtonGroup, Typography } from "@material-ui/core";
 import { useStyles } from "./styles";
 
 const Congratulation = ({ handleResetAllForm }) => {
   const classes = useStyles();
   return (
     <div className={classes.congratulationBox}>
-      <h2 className={classes.congratulationTitle}>Congratulations!</h2>
+      <Typography component="h2" variant="h5" color="textPrimary">
+        Congratulations!
+      </Typography>
       <ButtonGroup>
         <Button
           variant="contained"

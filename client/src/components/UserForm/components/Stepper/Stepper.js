@@ -6,7 +6,7 @@ import { useStyles, ColorlibConnector } from "./styles";
 const getSteps = () => {
   return ["Personal", "Contact", "Payment"];
 };
-const StepperComponent = ({activeStep}) => {
+const StepperComponent = ({ activeStep }) => {
   const classes = useStyles();
   const steps = getSteps();
   return (

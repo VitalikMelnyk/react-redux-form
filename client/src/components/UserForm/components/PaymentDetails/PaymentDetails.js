@@ -94,11 +94,7 @@ const PaymentDetails = ({
           >
             Reset
           </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleBackStep}
-          >
+          <Button variant="contained" color="primary" onClick={handleBackStep}>
             Back
           </Button>
         </ButtonGroup>

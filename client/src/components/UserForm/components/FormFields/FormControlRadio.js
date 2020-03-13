@@ -10,7 +10,12 @@ import { useStyles } from "../../styles";
 export const FormControlRadio = ({ value, onChange }) => {
   const classes = useStyles();
   return (
-    <FormControl fullWidth component="fieldset" className={classes.formControl}>
+    <FormControl
+      fullWidth
+      component="fieldset"
+      color="secondary"
+      className={classes.formControl}
+    >
       <FormLabel component="legend">Payment Type</FormLabel>
       <RadioGroup
         aria-label="paymentType"
@@ -23,6 +28,7 @@ export const FormControlRadio = ({ value, onChange }) => {
             value={item.value}
             key={item.value}
             label={item.label}
+            className={classes.paymentType}
             control={<Radio />}
           />
         ))}

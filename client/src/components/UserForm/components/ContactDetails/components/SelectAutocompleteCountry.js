@@ -18,6 +18,7 @@ export const SelectAutocompleteCountry = ({ errors, idName }) => {
   return (
     <Autocomplete
       //   freeSolo
+      color="secondary"
       id="selectCountry"
       autoComplete={true}
       style={{ width: 300 }}
@@ -33,6 +34,7 @@ export const SelectAutocompleteCountry = ({ errors, idName }) => {
       )}
       renderInput={params => (
         <TextField
+          color="secondary"
           error={errors[idName] ? true : false}
           helperText={errors[idName]}
           fullWidth

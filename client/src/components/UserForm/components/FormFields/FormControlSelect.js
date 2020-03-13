@@ -31,6 +31,7 @@ export const FormControlSelect = ({ onChange, errors, idName }) => {
         Gender
       </InputLabel>
       <Select
+        color="secondary"
         labelId={idName}
         id={idName}
         value={gender}

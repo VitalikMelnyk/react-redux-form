@@ -35,7 +35,6 @@ const ContactDetails = ({
     <>
       <FormTitle formTitle={formTitle} />
       <form action="" className={classes.DetailsForm}>
-        {/* <div className={classes.formFields}> */}
         <div className={classes.credentialFields}>
           <FormControlText
             errors={errors}
@@ -78,7 +77,6 @@ const ContactDetails = ({
             labelName="Zip Code"
             type="text"
           />
-          {/* </div> */}
         </div>
       </form>
       <ButtonGroup>
@@ -90,11 +88,7 @@ const ContactDetails = ({
           >
             Reset
           </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleBackStep}
-          >
+          <Button variant="contained" color="primary" onClick={handleBackStep}>
             Back
           </Button>
         </ButtonGroup>

@@ -2,29 +2,25 @@ import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles(theme => ({
   root: {
     minHeight: "100vh",
-    background: "#383a4f",
+    background: theme.palette.background.default,
     fontWeight: "700",
-    // color: "white",
     justifyContent: "center",
     alignItems: "center"
   },
   signUpContainer: {},
   signUpHeader: {
-    margin: "40px  0 45px",
+    margin: "40px 0 45px",
     textAlign: "center"
   },
   signUpMain: {
-    background: "#525575",
-    // border: "5px solid white",
+    background: theme.palette.background.signupForm,
     borderRadius: "30px",
     boxShadow: "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
   },
   signUpTitle: {
-    // fontFamily: "'Open Sans' sans-serif",
     fontSize: "35px",
     fontWeight: "700",
-    textTransform: "capitalize",
-    // color: "white"
+    textTransform: "capitalize"
   },
   signUpSubtitle: {},
   signUpFormBox: {
@@ -78,17 +74,18 @@ export const useStyles = makeStyles(theme => ({
         borderWidth: "2px"
       }
     },
-    ".MuiInput-underline:before": {
-      // color: "#55e8d5"
-    },
-    "& .MuiFormLabel-root": {
-      // color: "white",
-      "&.Mui-focused": {
-        // color: "#55e8d5"
-      }
-    }
   },
   genderSelectItem: {
     margin: "10px"
+  },
+  switchThemeToggle: {
+    "& .MuiTypography-root.MuiFormControlLabel-label": {
+      color: theme.palette.text.primary
+    }
+  },
+  paymentType: {
+    "& .MuiTypography-root.MuiFormControlLabel-label": {
+      color: theme.palette.text.primary
+    }
   }
 }));

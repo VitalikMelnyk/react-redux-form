@@ -14,6 +14,7 @@ export const FormControlDate = () => {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <KeyboardDatePicker
+        color="secondary"
         fullWidth
         autoOk
         openTo="year"

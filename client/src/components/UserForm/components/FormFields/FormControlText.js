@@ -22,6 +22,7 @@ export const FormControlText = ({
       error={errors[idName] ? true : false}
       fullWidth={fullWidth}
       required
+      color="secondary"
       type={type}
       id={idName}
       label={labelName}

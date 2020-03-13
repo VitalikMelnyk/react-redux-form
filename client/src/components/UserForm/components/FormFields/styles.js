@@ -1,10 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
-export const useStyles = makeStyles({
+export const useStyles = makeStyles(theme => ({
   genderLabel: {
     "& .MuiFormLabel-root": {
       "&.Mui-focused": {
-        color: "#55e8d5"
+        color: theme.palette.secondary.main
       }
     }
-  }
-});
+  },
+  
+}));

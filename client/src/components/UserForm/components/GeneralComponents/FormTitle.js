@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useStyles } from "./styles";
+import { Typography } from "@material-ui/core";
 
 export const FormTitle = ({ formTitle }) => {
   const classes = useStyles();
@@ -8,8 +9,12 @@ export const FormTitle = ({ formTitle }) => {
   const { activeStep } = UserFormReducer;
   return (
     <div className={classes.formTitle}>
-      <h2>{formTitle}</h2>
-      <p>{activeStep + 1} / 3</p>
+      <Typography variant="h5" color="textPrimary" component="h2">
+        {formTitle}
+      </Typography>
+      <Typography variant="h5" component="p" color="textPrimary">
+        {activeStep + 1} / 3
+      </Typography>
     </div>
   );
 };

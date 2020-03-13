@@ -157,9 +157,14 @@ const UserForm = ({ toggleTheme, checkedSwitch, theme }) => {
             </Typography>
             <FormControlLabel
               control={
-                <Switch checked={checkedSwitch} onChange={toggleTheme} />
+                <Switch
+                  color="primary"
+                  checked={checkedSwitch}
+                  onChange={toggleTheme}
+                />
               }
               label="Switch Theme"
+              className={classes.switchThemeToggle}
             />
           </div>
           <div className={classes.signUpMain}>

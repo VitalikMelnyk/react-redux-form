@@ -42,7 +42,6 @@ const PersonalDetails = ({
       >
         <div className={classes.credentialFields}>
           <FormControlText
-            
             idName="firstName"
             errors={errors}
             value={firstName}
