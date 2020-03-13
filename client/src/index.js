@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 // const devtools = composeWithDevTools();
 import logger from "redux-logger";
 import thunk from "redux-thunk";
-import rootReducer from "./store/UserForm/reducers";
+import rootReducer from "./store/reducers/";
 import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";

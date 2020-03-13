@@ -73,7 +73,7 @@ export const useStyles = makeStyles(theme => ({
         borderColor: "green",
         borderWidth: "2px"
       }
-    },
+    }
   },
   genderSelectItem: {
     margin: "10px"
@@ -86,6 +86,11 @@ export const useStyles = makeStyles(theme => ({
   paymentType: {
     "& .MuiTypography-root.MuiFormControlLabel-label": {
       color: theme.palette.text.primary
+    }
+  },
+  btn: {
+    "& .MuiButton-root": {
+      marginRight: "15px"
     }
   }
 }));

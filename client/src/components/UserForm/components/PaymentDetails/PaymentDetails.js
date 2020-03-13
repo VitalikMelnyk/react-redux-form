@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button, ButtonGroup, Box } from "@material-ui/core";
 import { FormTitle } from "../GeneralComponents/FormTitle";
 import { useStyles } from "../../styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -87,13 +87,15 @@ const PaymentDetails = ({
       </form>
       <ButtonGroup>
         <ButtonGroup>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleResetCurrentStep}
-          >
-            Reset
-          </Button>
+          <Box mr={2}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleResetCurrentStep}
+            >
+              Reset
+            </Button>
+          </Box>
           <Button variant="contained" color="primary" onClick={handleBackStep}>
             Back
           </Button>

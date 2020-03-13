@@ -12,7 +12,7 @@ const Congratulation = ({ handleResetAllForm }) => {
       <ButtonGroup>
         <Button
           variant="contained"
-          color="secondary"
+          color="primary"
           onClick={handleResetAllForm}
         >
           Reset Steps

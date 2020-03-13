@@ -6,13 +6,13 @@ import {
   createMuiTheme
 } from "@material-ui/core";
 import UserForm from "./components/UserForm";
-import { setThemeType } from "./store/UserForm/actions";
 import { createTheme } from "./theme/config";
+import { setThemeType } from "./store/Theme/actions";
 
 const App = () => {
-  const { UserFormReducer } = useSelector(state => state);
+  const { ThemeReducer } = useSelector(state => state);
   const dispatch = useDispatch();
-  const { themeType, checkedSwitch } = UserFormReducer;
+  const { themeType, checkedSwitch } = ThemeReducer;
   console.log(themeType);
   const toggleTheme = () => {
     const newThemeType = themeType === "light" ? "dark" : "light";
@@ -25,6 +25,7 @@ const App = () => {
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={muiTheme}>
         <UserForm
+
           checkedSwitch={checkedSwitch}
           toggleTheme={toggleTheme}
           theme={themeType}

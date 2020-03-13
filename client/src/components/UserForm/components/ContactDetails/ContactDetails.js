@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button, ButtonGroup, Box } from "@material-ui/core";
 import { FormTitle } from "../GeneralComponents/FormTitle";
 import { useStyles } from "../../styles";
 import { setContactField } from "../../../../store/UserForm/ContactDetails/actions";
@@ -81,13 +81,15 @@ const ContactDetails = ({
       </form>
       <ButtonGroup>
         <ButtonGroup>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleResetCurrentStep}
-          >
-            Reset
-          </Button>
+          <Box mr={2}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleResetCurrentStep}
+            >
+              Reset
+            </Button>
+          </Box>
           <Button variant="contained" color="primary" onClick={handleBackStep}>
             Back
           </Button>

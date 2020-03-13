@@ -3,7 +3,6 @@ import {
   ACTIVE_STEP_DECRAMENT,
   ADD_DATA_TO_ALL_INFORMATION,
   RESET_ALL_FORM,
-  SET_THEME_TYPE
 } from "./actionTypes";
 
 export const handleActiveStepNext = payload => ({
@@ -23,7 +22,3 @@ export const addDataToAllInformation = payload => ({
   payload
 });
 
-export const setThemeType = payload => ({
-  type: SET_THEME_TYPE,
-  payload
-});
