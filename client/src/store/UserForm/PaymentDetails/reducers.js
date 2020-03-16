@@ -5,7 +5,7 @@ import {
   ACTIVE_STEP_INCREMENT,
   RESET_ALL_FORM,
   RESET_PAYMENT_STEP
-} from "../actionTypes";
+} from "../../actionTypes";
 
 const initialState = {
   bankName: "",

@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Grid, FormControlLabel, Switch, Typography } from "@material-ui/core";
-import StepperComponent from "./components/Stepper";
+import { Grid, Typography } from "@material-ui/core";
 import { useStyles } from "./styles";
+import StepperComponent from "./components/Stepper";
 import PersonalDetails from "./components/PersonalDetails";
 import ContactDetails from "./components/ContactDetails";
 import PaymentDetails from "./components/PaymentDetails";
 import Introduction from "./components/Introduction";
 import Congratulation from "./components/Congratulation";
+import FormControlSwitch from "./components/FormFields/FormControlSwitch";
+import { SelectLanguage } from "./components/GeneralComponents/SelectLanguage";
 import { validateSchema } from "../../utils/validate";
 import {
   setPersonalErrors,
@@ -27,17 +29,27 @@ import {
   addDataToAllInformation,
   handleResetAllForm
 } from "../../store/UserForm/actions";
+import { setThemeType } from "../../store/Theme/actions";
+import { useTranslation } from "react-i18next";
 
-const UserForm = ({ toggleTheme, checkedSwitch, theme }) => {
-  const classes = useStyles(theme);
+const UserForm = () => {
+  const classes = useStyles();
   const {
     UserFormReducer,
+    ThemeReducer,
     PersonalDetailsReducer,
     ContactDetailsReducer,
     PaymentDetailsReducer
   } = useSelector(state => state);
   const { activeStep } = UserFormReducer;
+  const { themeType, checkedSwitch } = ThemeReducer;
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
+  const toggleTheme = () => {
+    const newThemeType = themeType === "light" ? "dark" : "light";
+    dispatch(setThemeType({ newThemeType, checkedSwitch }));
+  };
   const handleNextStep = () => {
     dispatch(handleActiveStepNext());
   };
@@ -105,7 +117,7 @@ const UserForm = ({ toggleTheme, checkedSwitch, theme }) => {
       case 0:
         return (
           <PersonalDetails
-            formTitle="Personal Details:"
+            formTitle={t("Personal Details")}
             handleNextStep={handleNextStep}
             handleResetCurrentStep={handleResetPersonalStep}
             handleSubmitFormData={handleSubmitDataToAllInformation(
@@ -116,7 +128,7 @@ const UserForm = ({ toggleTheme, checkedSwitch, theme }) => {
       case 1:
         return (
           <ContactDetails
-            formTitle="Contact Details:"
+            formTitle={t("Contact Details")}
             handleNextStep={handleNextStep}
             handleBackStep={handleBackStep}
             handleResetCurrentStep={handleResetContactStep}
@@ -128,7 +140,7 @@ const UserForm = ({ toggleTheme, checkedSwitch, theme }) => {
       case 2:
         return (
           <PaymentDetails
-            formTitle="Payment Details:"
+            formTitle={t("Payment Details")}
             handleBackStep={handleBackStep}
             handleResetCurrentStep={handleResetPaymentStep}
             handleSubmit={handleSubmitDataToAllInformation(
@@ -153,19 +165,16 @@ const UserForm = ({ toggleTheme, checkedSwitch, theme }) => {
               variant="h1"
               className={classes.signUpTitle}
             >
-              Sign up to Financial
+              {/* Sign up to Financial */}
+              {t("Sign Up To Financial")}
             </Typography>
-            <FormControlLabel
-              control={
-                <Switch
-                  color="primary"
-                  checked={checkedSwitch}
-                  onChange={toggleTheme}
-                />
-              }
-              label="Switch Theme"
+            <FormControlSwitch
+              checkedSwitch={checkedSwitch}
+              toggleTheme={toggleTheme}
               className={classes.switchThemeToggle}
+              label={t("Switch Theme")}
             />
+            <SelectLanguage name="language" />
           </div>
           <div className={classes.signUpMain}>
             <StepperComponent activeStep={activeStep} />

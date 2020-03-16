@@ -2,7 +2,7 @@ import {
   SET_CONTACT_FIELD,
   SET_CONTACT_ERRORS,
   RESET_CONTACT_STEP
-} from "../actionTypes";
+} from "../../actionTypes";
 
 export const setContactField = payload => ({
   type: SET_CONTACT_FIELD,

@@ -268,3 +268,9 @@ export const genderOptions = [
   { value: "female", label: "Female" },
   { value: "other", label: "Other" }
 ];
+
+export const languageOptions = [
+  { value: "en", label: "English" },
+  { value: "ua", label: "Українська" }
+  // { value: "other", label: "Other" }
+];

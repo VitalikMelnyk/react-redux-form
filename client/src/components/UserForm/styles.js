@@ -10,7 +10,14 @@ export const useStyles = makeStyles(theme => ({
   signUpContainer: {},
   signUpHeader: {
     margin: "40px 0 45px",
-    textAlign: "center"
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    "& .MuiTypography-root.MuiFormControlLabel-label": {
+      color: theme.palette.text.primary
+    }
   },
   signUpMain: {
     background: theme.palette.background.signupForm,
@@ -20,7 +27,7 @@ export const useStyles = makeStyles(theme => ({
   signUpTitle: {
     fontSize: "35px",
     fontWeight: "700",
-    textTransform: "capitalize"
+    // textTransform: "capitalize"
   },
   signUpSubtitle: {},
   signUpFormBox: {
@@ -84,6 +91,11 @@ export const useStyles = makeStyles(theme => ({
     }
   },
   paymentType: {
+    "& .MuiTypography-root.MuiFormControlLabel-label": {
+      color: theme.palette.text.primary
+    }
+  },
+  selectLanguage: {
     "& .MuiTypography-root.MuiFormControlLabel-label": {
       color: theme.palette.text.primary
     }

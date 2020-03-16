@@ -1,36 +1,29 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   MuiThemeProvider,
   StylesProvider,
   createMuiTheme
 } from "@material-ui/core";
-import UserForm from "./components/UserForm";
+import { I18nextProvider } from "react-i18next";
 import { createTheme } from "./theme/config";
-import { setThemeType } from "./store/Theme/actions";
+import UserForm from "./components/UserForm";
+import i18n from "./shared/i18n";
 
 const App = () => {
   const { ThemeReducer } = useSelector(state => state);
-  const dispatch = useDispatch();
-  const { themeType, checkedSwitch } = ThemeReducer;
-  console.log(themeType);
-  const toggleTheme = () => {
-    const newThemeType = themeType === "light" ? "dark" : "light";
-    dispatch(setThemeType({ newThemeType, checkedSwitch }));
-  };
+  const { themeType } = ThemeReducer;
   const theme = createTheme(themeType);
   const muiTheme = createMuiTheme(theme);
   console.log(muiTheme);
+  console.log(i18n);
   return (
     <StylesProvider injectFirst>
-      <MuiThemeProvider theme={muiTheme}>
-        <UserForm
-
-          checkedSwitch={checkedSwitch}
-          toggleTheme={toggleTheme}
-          theme={themeType}
-        />
-      </MuiThemeProvider>
+      <I18nextProvider i18n={i18n}>
+        <MuiThemeProvider theme={muiTheme}>
+          <UserForm />
+        </MuiThemeProvider>
+      </I18nextProvider>
     </StylesProvider>
   );
 };

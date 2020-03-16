@@ -5,7 +5,7 @@ import {
   ACTIVE_STEP_INCREMENT,
   RESET_ALL_FORM,
   RESET_PERSONAL_STEP
-} from "../actionTypes";
+} from "../../actionTypes";
 
 const initialState = {
   firstName: "",

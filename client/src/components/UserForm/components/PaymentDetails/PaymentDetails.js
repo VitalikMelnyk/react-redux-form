@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FormControlText } from "../FormFields";
 import { setPaymentField } from "../../../../store/UserForm/PaymentDetails/actions";
 import { FormControlRadio } from "../FormFields/FormControlRadio";
+import { useTranslation } from "react-i18next";
 
 const PaymentDetails = ({
   formTitle,
@@ -24,7 +25,7 @@ const PaymentDetails = ({
     errors
   } = PaymentDetailsReducer;
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const handleChangeField = name => event => {
     const value = event.target.value;
     const payload = { value, name };
@@ -42,7 +43,7 @@ const PaymentDetails = ({
             value={bankName}
             onChange={handleChangeField("bankName")}
             fullWidth={true}
-            labelName="Bank Name"
+            labelName={t("Bank Name")}
             type="text"
           />
           <FormControlText
@@ -51,12 +52,13 @@ const PaymentDetails = ({
             value={holderName}
             onChange={handleChangeField("holderName")}
             fullWidth={true}
-            labelName="Holder Name"
+            labelName={t("Holder Name")}
             type="text"
           />
         </div>
         <div className={classes.formFields}>
           <FormControlRadio
+            idName="paymentType"
             errors={errors}
             value={paymentType}
             onChange={handleChangeField("paymentType")}
@@ -70,7 +72,7 @@ const PaymentDetails = ({
             value={cardNumber}
             onChange={handleChangeField("cardNumber")}
             fullWidth={true}
-            labelName="Card Number"
+            labelName={t("Card Number")}
             type="password"
           />
           <FormControlText
@@ -80,7 +82,7 @@ const PaymentDetails = ({
             value={cvcCode}
             onChange={handleChangeField("cvcCode")}
             fullWidth={true}
-            labelName="CVC"
+            labelName={t("CVC")}
             type="password"
           />
         </div>
@@ -93,16 +95,16 @@ const PaymentDetails = ({
               color="secondary"
               onClick={handleResetCurrentStep}
             >
-              Reset
+              {t("Reset")}
             </Button>
           </Box>
           <Button variant="contained" color="primary" onClick={handleBackStep}>
-            Back
+            {t("Back")}
           </Button>
         </ButtonGroup>
 
         <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Submit
+          {t("Submit")}
         </Button>
       </ButtonGroup>
     </>

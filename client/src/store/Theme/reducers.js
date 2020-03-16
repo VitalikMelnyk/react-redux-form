@@ -1,4 +1,4 @@
-import { SET_THEME_TYPE } from "../UserForm/actionTypes";
+import { SET_THEME_TYPE } from "../actionTypes";
 
 const initialState = {
   checkedSwitch: false,

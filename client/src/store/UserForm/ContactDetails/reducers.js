@@ -5,11 +5,11 @@ import {
   ACTIVE_STEP_INCREMENT,
   RESET_ALL_FORM,
   RESET_CONTACT_STEP
-} from "../actionTypes";
+} from "../../actionTypes";
 
 const initialState = {
   telephoneNumber: "",
-  country: undefined,
+  country: {},
   city: "",
   address: "",
   zipCode: "",

@@ -9,6 +9,7 @@ import {
 } from "../FormFields";
 import { setPersonalField } from "../../../../store/UserForm/PersonalDetails/actions";
 import { FormTitle } from "../GeneralComponents/FormTitle";
+import { useTranslation } from "react-i18next";
 
 const PersonalDetails = ({
   handleResetCurrentStep,
@@ -16,6 +17,7 @@ const PersonalDetails = ({
   formTitle
 }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const { PersonalDetailsReducer } = useSelector(state => state);
   const {
     firstName,
@@ -48,7 +50,7 @@ const PersonalDetails = ({
             onChange={handleChangeField("firstName")}
             fullWidth={true}
             type="text"
-            labelName="First Name"
+            labelName={t("First Name")}
           />
           <FormControlText
             errors={errors}
@@ -56,7 +58,7 @@ const PersonalDetails = ({
             value={secondName}
             onChange={handleChangeField("secondName")}
             fullWidth={true}
-            labelName="Second Name"
+            labelName={t("Second Name")}
             type="text"
           />
         </div>
@@ -75,7 +77,7 @@ const PersonalDetails = ({
             value={email}
             onChange={handleChangeField("email")}
             fullWidth={true}
-            labelName="Email"
+            labelName={t("Email")}
             type="email"
           />
           <FormControlText
@@ -84,7 +86,7 @@ const PersonalDetails = ({
             value={password}
             onChange={handleChangeField("password")}
             fullWidth={true}
-            labelName="Password"
+            labelName={t("Password")}
             type="password"
           />
         </div>
@@ -95,7 +97,7 @@ const PersonalDetails = ({
           color="secondary"
           onClick={handleResetCurrentStep}
         >
-          Reset
+          {t("Reset")}
         </Button>
 
         <Button
@@ -103,7 +105,7 @@ const PersonalDetails = ({
           color="primary"
           onClick={handleSubmitFormData}
         >
-          Next
+          {t("Next")}
         </Button>
       </ButtonGroup>
     </>

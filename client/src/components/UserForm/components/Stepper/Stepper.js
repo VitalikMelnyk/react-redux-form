@@ -2,12 +2,14 @@ import React from "react";
 import { Stepper, Step, StepLabel } from "@material-ui/core";
 import { ColorlibStepIcon } from "./ColorlibStepIcon";
 import { useStyles, ColorlibConnector } from "./styles";
+import { useTranslation } from "react-i18next";
 
 const getSteps = () => {
   return ["Personal", "Contact", "Payment"];
 };
 const StepperComponent = ({ activeStep }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const steps = getSteps();
   return (
     <Stepper
@@ -18,7 +20,7 @@ const StepperComponent = ({ activeStep }) => {
     >
       {steps.map(label => (
         <Step key={label}>
-          <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+          <StepLabel StepIconComponent={ColorlibStepIcon}>{t(label)}</StepLabel>
         </Step>
       ))}
     </Stepper>

@@ -2,7 +2,7 @@ import {
   SET_PAYMENT_FIELD,
   SET_PAYMENT_ERRORS,
   RESET_PAYMENT_STEP
-} from "../actionTypes";
+} from "../../actionTypes";
 export const setPaymentField = payload => ({
   type: SET_PAYMENT_FIELD,
   payload

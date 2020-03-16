@@ -6,15 +6,16 @@ import { useStyles } from "../../styles";
 import { setContactField } from "../../../../store/UserForm/ContactDetails/actions";
 import { FormControlText } from "../FormFields";
 import { SelectAutocompleteCountry } from "./components/SelectAutocompleteCountry";
+import { useTranslation } from "react-i18next";
 
 const ContactDetails = ({
-  handleNextStep,
   handleBackStep,
   handleResetCurrentStep,
   handleSubmitFormData,
   formTitle
 }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const { ContactDetailsReducer } = useSelector(state => state);
   const {
     telephoneNumber,
@@ -42,7 +43,7 @@ const ContactDetails = ({
             value={city}
             onChange={handleChangeField("city")}
             fullWidth={true}
-            labelName="City"
+            labelName={t("City")}
             type="text"
           />
           <FormControlText
@@ -52,7 +53,7 @@ const ContactDetails = ({
             onChange={handleChangeField("telephoneNumber")}
             fullWidth={true}
             type="tel"
-            labelName="Telephone Number"
+            labelName={t("Telephone Number")}
           />
         </div>
         <div className={classes.credentialFields}>
@@ -65,7 +66,7 @@ const ContactDetails = ({
             value={address}
             onChange={handleChangeField("address")}
             fullWidth={true}
-            labelName="Address"
+            labelName={t("Address")}
             type="text"
           />
           <FormControlText
@@ -74,7 +75,7 @@ const ContactDetails = ({
             value={zipCode}
             onChange={handleChangeField("zipCode")}
             fullWidth={true}
-            labelName="Zip Code"
+            labelName={t("Zip Code")}
             type="text"
           />
         </div>
@@ -82,16 +83,19 @@ const ContactDetails = ({
       <ButtonGroup>
         <ButtonGroup>
           <Box mr={2}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleResetCurrentStep}
-            >
-              Reset
-            </Button>
+            {props => (
+              <Button
+                {...props}
+                color="secondary"
+                variant="contained"
+                onClick={handleResetCurrentStep}
+              >
+                {t("Reset")}
+              </Button>
+            )}
           </Box>
           <Button variant="contained" color="primary" onClick={handleBackStep}>
-            Back
+            {t("Back")}
           </Button>
         </ButtonGroup>
 
@@ -100,7 +104,7 @@ const ContactDetails = ({
           color="primary"
           onClick={handleSubmitFormData}
         >
-          Next
+          {t("Next")}
         </Button>
       </ButtonGroup>
     </>

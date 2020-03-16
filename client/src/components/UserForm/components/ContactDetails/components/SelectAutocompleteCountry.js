@@ -2,9 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { countriesList } from "../../../../../shared";
+import { countriesList } from "../../../../../shared/fieldConfig";
 import { setContactField } from "../../../../../store/UserForm/ContactDetails/actions";
+import { useTranslation } from "react-i18next";
 export const SelectAutocompleteCountry = ({ errors, idName }) => {
+  const { t } = useTranslation();
   const { ContactDetailsReducer } = useSelector(state => state);
   const { country } = ContactDetailsReducer;
   const dispatch = useDispatch();
@@ -36,12 +38,12 @@ export const SelectAutocompleteCountry = ({ errors, idName }) => {
         <TextField
           color="secondary"
           error={errors[idName] ? true : false}
-          helperText={errors[idName]}
+          helperText={t(errors[idName])}
           fullWidth
           required
           id={idName}
           {...params}
-          label="Choose a country"
+          label={t("Choose a country")}
           variant="standard"
           inputProps={{
             ...params.inputProps

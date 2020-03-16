@@ -1,6 +1,7 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
 import { useStyles } from "../../styles";
+import { useTranslation } from "react-i18next";
 
 export const FormControlText = ({
   maxLength = 25,
@@ -12,6 +13,7 @@ export const FormControlText = ({
   onChange,
   errors
 }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <TextField
@@ -29,7 +31,7 @@ export const FormControlText = ({
       variant="standard"
       value={value}
       onChange={onChange}
-      helperText={errors[idName]}
+      helperText={t(errors[idName])}
     />
   );
 };

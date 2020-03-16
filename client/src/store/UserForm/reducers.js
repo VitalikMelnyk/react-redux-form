@@ -3,7 +3,7 @@ import {
   ACTIVE_STEP_DECRAMENT,
   ADD_DATA_TO_ALL_INFORMATION,
   RESET_ALL_FORM,
-} from "./actionTypes";
+} from "../actionTypes";
 
 const initialState = {
   activeStep: -1,

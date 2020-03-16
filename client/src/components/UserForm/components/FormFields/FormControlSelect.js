@@ -7,11 +7,13 @@ import {
   FormControl,
   FormHelperText
 } from "@material-ui/core";
-import { genderOptions } from "../../../../shared";
+import { genderOptions } from "../../../../shared/fieldConfig";
 import { useStyles } from "./styles";
+import { useTranslation } from "react-i18next";
 
 export const FormControlSelect = ({ onChange, errors, idName }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const { PersonalDetailsReducer } = useSelector(state => state);
   const { gender } = PersonalDetailsReducer;
   const inputLabel = useRef(null);
@@ -28,7 +30,7 @@ export const FormControlSelect = ({ onChange, errors, idName }) => {
       fullWidth
     >
       <InputLabel ref={inputLabel} id={idName}>
-        Gender
+        {t("Gender")}
       </InputLabel>
       <Select
         color="secondary"
@@ -39,15 +41,15 @@ export const FormControlSelect = ({ onChange, errors, idName }) => {
         labelWidth={labelWidth}
       >
         <MenuItem value="" disabled>
-          Select your gender
+          {t("Select your gender")}
         </MenuItem>
         {genderOptions.map(item => (
           <MenuItem value={item.value} key={item.value}>
-            {item.label}
+            {t(item.label)}
           </MenuItem>
         ))}
       </Select>
-      <FormHelperText>{errors[idName]}</FormHelperText>
+      <FormHelperText>{t(errors[idName])}</FormHelperText>
     </FormControl>
   );
 };

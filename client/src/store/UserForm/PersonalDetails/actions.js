@@ -2,7 +2,7 @@ import {
   SET_PERSONAL_FIELD,
   SET_PERSONAL_ERRORS,
   RESET_PERSONAL_STEP,
-} from "../actionTypes";
+} from "../../actionTypes";
 
 export const setPersonalField = payload => ({
   type: SET_PERSONAL_FIELD,

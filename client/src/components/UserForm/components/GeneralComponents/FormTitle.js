@@ -2,9 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useStyles } from "./styles";
 import { Typography } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 export const FormTitle = ({ formTitle }) => {
   const classes = useStyles();
+  const {t} = useTranslation()
   const { UserFormReducer } = useSelector(state => state);
   const { activeStep } = UserFormReducer;
   return (

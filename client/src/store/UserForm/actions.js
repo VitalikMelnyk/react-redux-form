@@ -3,7 +3,7 @@ import {
   ACTIVE_STEP_DECRAMENT,
   ADD_DATA_TO_ALL_INFORMATION,
   RESET_ALL_FORM,
-} from "./actionTypes";
+} from "../actionTypes";
 
 export const handleActiveStepNext = payload => ({
   type: ACTIVE_STEP_INCREMENT
