@@ -2,11 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useStyles } from "./styles";
 import { Typography } from "@material-ui/core";
-import { useTranslation } from "react-i18next";
+import { getSteps } from "../../../../shared/functions";
 
 export const FormTitle = ({ formTitle }) => {
+  const steps = getSteps();
   const classes = useStyles();
-  const {t} = useTranslation()
   const { UserFormReducer } = useSelector(state => state);
   const { activeStep } = UserFormReducer;
   return (
@@ -15,7 +15,7 @@ export const FormTitle = ({ formTitle }) => {
         {formTitle}
       </Typography>
       <Typography variant="h5" component="p" color="textPrimary">
-        {activeStep + 1} / 3
+        {activeStep + 1} / {steps.length}
       </Typography>
     </div>
   );

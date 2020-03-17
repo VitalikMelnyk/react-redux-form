@@ -7,7 +7,7 @@ import {
   FormControl,
   FormHelperText
 } from "@material-ui/core";
-import { genderOptions } from "../../../../shared/fieldConfig";
+import { genderOptions } from "../../../../shared/functions";
 import { useStyles } from "./styles";
 import { useTranslation } from "react-i18next";
 

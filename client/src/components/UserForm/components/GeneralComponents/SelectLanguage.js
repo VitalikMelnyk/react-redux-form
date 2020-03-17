@@ -6,7 +6,7 @@ import {
   Radio,
   RadioGroup
 } from "@material-ui/core";
-import { languageOptions } from "../../../../shared/fieldConfig";
+import { languageOptions } from "../../../../shared/functions";
 import { useStyles } from "../../styles";
 import { useSelector, useDispatch } from "react-redux";
 import { setLanguageApp } from "../../../../store/Locale/actions";

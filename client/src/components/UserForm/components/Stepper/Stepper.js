@@ -3,10 +3,10 @@ import { Stepper, Step, StepLabel } from "@material-ui/core";
 import { ColorlibStepIcon } from "./ColorlibStepIcon";
 import { useStyles, ColorlibConnector } from "./styles";
 import { useTranslation } from "react-i18next";
-
-const getSteps = () => {
-  return ["Personal", "Contact", "Payment"];
-};
+import { getSteps } from "../../../../shared/functions";
+// const getSteps = () => {
+//   return ["Personal", "Contact", "Payment"];
+// };
 const StepperComponent = ({ activeStep }) => {
   const classes = useStyles();
   const { t } = useTranslation();

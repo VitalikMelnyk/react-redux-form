@@ -7,7 +7,7 @@ import {
   RadioGroup,
   FormHelperText
 } from "@material-ui/core";
-import { radioItems } from "../../../../shared/fieldConfig";
+import { radioItems } from "../../../../shared/functions";
 import { useStyles } from "../../styles";
 import { useTranslation } from "react-i18next";
 

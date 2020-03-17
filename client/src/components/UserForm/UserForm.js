@@ -128,7 +128,8 @@ const UserForm = () => {
       case 1:
         return (
           <ContactDetails
-            formTitle={t("Contact Details")}
+            formTitle={
+              ("Contact Details")}
             handleNextStep={handleNextStep}
             handleBackStep={handleBackStep}
             handleResetCurrentStep={handleResetContactStep}

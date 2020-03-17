@@ -1,9 +1,7 @@
 import {
   indigo,
   lime,
-  green,
   blueGrey,
-  brown,
   lightGreen,
   deepPurple
 } from "@material-ui/core/colors";
@@ -14,16 +12,16 @@ const customStyles = {
     signupForm: "#3C3F58"
   }
 };
-const ownStyleDark = {
-  main: "#00f1ff",
-  dark: "#00becc",
-  light: "#70ffff"
-};
-const ownStyleLight = {
-  main: "#be84ff",
-  dark: "#8b56cb",
-  light: "#f3b5ff"
-};
+// const ownStyleDark = {
+//   main: "#00f1ff",
+//   dark: "#00becc",
+//   light: "#70ffff"
+// };
+// const ownStyleLight = {
+//   main: "#be84ff",
+//   dark: "#8b56cb",
+//   light: "#f3b5ff"
+// };
 
 export const createTheme = themeType => {
   const theme = {
@@ -31,7 +29,7 @@ export const createTheme = themeType => {
       type: themeType,
       primary: themeType === "light" ? deepPurple : indigo,
       secondary: themeType === "light" ? lightGreen : lime,
-      ownStyle: themeType === "light" ? ownStyleLight : ownStyleDark,
+      // ownStyle: themeType === "light" ? ownStyleLight : ownStyleDark,
       background: {
         default:
           themeType === "light"
